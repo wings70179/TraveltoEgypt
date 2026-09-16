@@ -1,0 +1,895 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>埃及特選10日旅程隨身手冊｜26XM921TK</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter & Noto Sans TC -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Inter"', '"Noto Sans TC"', 'sans-serif'],
+            serif: ['"Cinzel"', '"Noto Sans TC"', 'serif'],
+          },
+          colors: {
+            nile: {
+              50: '#f0f7ff',
+              100: '#e0effe',
+              600: '#0284c7',
+              800: '#075985',
+              900: '#0c4a6e',
+              950: '#082f49'
+            },
+            pyramid: {
+              50: '#fdfbf7',
+              100: '#f8f3e8',
+              200: '#edd8b0',
+              400: '#d4af37',
+              500: '#c59b27',
+              600: '#a67c1e',
+              800: '#684a0d',
+              900: '#3d2b07'
+            },
+            sand: {
+              900: '#141416',
+              800: '#1e1f24',
+              700: '#2b2d35',
+              600: '#3e414c'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #141416;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #3e414c;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #c59b27;
+    }
+    .badge-gold {
+      background: linear-gradient(135deg, rgba(212,175,55,0.2) 0%, rgba(197,155,39,0.1) 100%);
+      border: 1px solid rgba(212,175,55,0.4);
+    }
+    .hero-pattern {
+      background-color: #0c1724;
+      background-image: radial-gradient(rgba(212, 175, 55, 0.15) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    input[type="checkbox"]:checked + label {
+      text-decoration: line-through;
+      color: #9ca3af;
+    }
+  </style>
+</head>
+
+<body class="bg-sand-900 text-slate-100 font-sans antialiased selection:bg-pyramid-500 selection:text-black min-h-screen flex flex-col">
+
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-sand-900/90 border-b border-sand-700/80">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-pyramid-600 to-amber-300 flex items-center justify-center shadow-lg shadow-pyramid-900/50">
+          <i data-lucide="compass" class="w-5 h-5 text-sand-900"></i>
+        </div>
+        <div>
+          <h1 class="text-sm sm:text-base font-bold text-white tracking-wide flex items-center gap-2">
+            埃及特選 10 日遊
+            <span class="text-[11px] font-normal px-2 py-0.5 rounded bg-pyramid-500/20 text-pyramid-400 border border-pyramid-500/30">26XM921TK</span>
+          </h1>
+          <p class="text-[11px] text-slate-400">2026/09/21 - 09/30 ｜ 領隊：王則鋼 先生</p>
+        </div>
+      </div>
+
+      <!-- Quick Emergency/Info Button -->
+      <button onclick="switchTab('tab-briefing')" class="text-xs px-3 py-1.5 rounded-lg bg-sand-800 hover:bg-sand-700 text-pyramid-400 border border-sand-700 flex items-center gap-1.5 transition">
+        <i data-lucide="zap" class="w-3.5 h-3.5"></i>
+        <span class="hidden sm:inline">行前備忘速查</span>
+        <span class="sm:hidden">速查</span>
+      </button>
+    </div>
+
+    <!-- Main Navigation Tabs -->
+    <div class="max-w-5xl mx-auto px-2 sm:px-6 flex border-t border-sand-800 overflow-x-auto no-scrollbar">
+      <button onclick="switchTab('tab-itinerary')" id="nav-itinerary" class="tab-btn flex-1 min-w-[90px] py-3 text-xs sm:text-sm font-medium border-b-2 border-pyramid-500 text-pyramid-400 flex items-center justify-center gap-1.5 transition">
+        <i data-lucide="calendar" class="w-4 h-4"></i>
+        <span>每日行程</span>
+      </button>
+      <button onclick="switchTab('tab-packing')" id="nav-packing" class="tab-btn flex-1 min-w-[100px] py-3 text-xs sm:text-sm font-medium border-b-2 border-transparent text-slate-400 hover:text-slate-200 flex items-center justify-center gap-1.5 transition">
+        <i data-lucide="luggage" class="w-4 h-4"></i>
+        <span>行前清單</span>
+      </button>
+      <button onclick="switchTab('tab-souvenir')" id="nav-souvenir" class="tab-btn flex-1 min-w-[100px] py-3 text-xs sm:text-sm font-medium border-b-2 border-transparent text-slate-400 hover:text-slate-200 flex items-center justify-center gap-1.5 transition">
+        <i data-lucide="gift" class="w-4 h-4"></i>
+        <span>伴手禮 Memo</span>
+      </button>
+      <button onclick="switchTab('tab-briefing')" id="nav-briefing" class="tab-btn flex-1 min-w-[90px] py-3 text-xs sm:text-sm font-medium border-b-2 border-transparent text-slate-400 hover:text-slate-200 flex items-center justify-center gap-1.5 transition">
+        <i data-lucide="shield-alert" class="w-4 h-4"></i>
+        <span>說明會速查</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="flex-1 max-w-5xl w-full mx-auto p-4 sm:p-6 space-y-6">
+
+    <!-- Top Key Notice Banner (Dynamic highlights from user briefing) -->
+    <div class="bg-gradient-to-r from-amber-950/40 via-sand-800 to-sand-800 border border-amber-500/30 rounded-2xl p-4 sm:p-5 shadow-lg">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-sand-700/60 pb-3 mb-3">
+        <div class="flex items-center space-x-2 text-amber-400 text-xs sm:text-sm font-semibold">
+          <i data-lucide="sparkles" class="w-4 h-4"></i>
+          <span>重點提醒速記</span>
+        </div>
+        <div class="flex flex-wrap gap-2 text-[11px] text-slate-300">
+          <span class="px-2 py-0.5 rounded bg-sand-900/80 border border-sand-700">開羅 18~32°C</span>
+          <span class="px-2 py-0.5 rounded bg-sand-900/80 border border-sand-700">南埃 23~36°C</span>
+          <span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">美金預備：800美</span>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs text-slate-300">
+        <div class="flex items-start gap-2 bg-sand-900/40 p-2.5 rounded-xl border border-sand-700/40">
+          <i data-lucide="briefcase" class="w-4 h-4 text-pyramid-400 shrink-0 mt-0.5"></i>
+          <div><strong class="text-white">Day 2 夜臥火車過夜包：</strong>當晚4人一間盥洗(2hr內)，大行李不搬，請備登機箱或手提過夜包。</div>
+        </div>
+        <div class="flex items-start gap-2 bg-sand-900/40 p-2.5 rounded-xl border border-sand-700/40">
+          <i data-lucide="thermometer-snowflake" class="w-4 h-4 text-sky-400 shrink-0 mt-0.5"></i>
+          <div><strong class="text-white">必帶外套防強冷：</strong>飛機、臥鋪火車冷氣強；日夜溫差極大且風沙乾燥。</div>
+        </div>
+        <div class="flex items-start gap-2 bg-sand-900/40 p-2.5 rounded-xl border border-sand-700/40">
+          <i data-lucide="banknote" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i>
+          <div><strong class="text-white">美金小額散鈔：</strong>100-200元小額($10x15, $5x10, $1x30)，注意新版人像無圈圈。</div>
+        </div>
+      </div>
+    </div>
+
+    <section id="tab-itinerary" class="tab-content space-y-4">
+      
+      <!-- Flight & Hotel Quick Bar -->
+      <div class="flex flex-wrap gap-2 items-center justify-between bg-sand-800/80 border border-sand-700 p-3 rounded-xl text-xs">
+        <div class="flex items-center gap-2 text-slate-300">
+          <i data-lucide="plane-takeoff" class="w-4 h-4 text-pyramid-400"></i>
+          <span>土耳其航空 TK025/TK690 (桃園T2 9/21 18:45集合，自帶護照可18:15到)</span>
+        </div>
+        <div class="flex items-center gap-2 text-slate-400">
+          <span>全程四晚遊輪＋一晚夜臥火車＋五星飯店</span>
+        </div>
+      </div>
+
+      <!-- Days Accordion Timeline -->
+      <div class="space-y-3.5" id="itinerary-list">
+
+        <!-- Day 1 -->
+        <div class="bg-sand-800 border border-sand-700 rounded-2xl p-4 sm:p-5 transition hover:border-pyramid-500/50">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-sand-700/70 pb-3">
+            <div class="flex items-center gap-3">
+              <span class="w-10 h-10 rounded-xl bg-pyramid-500/10 border border-pyramid-500/30 text-pyramid-400 font-serif font-bold text-lg flex items-center justify-center">D1</span>
+              <div>
+                <span class="text-xs font-mono text-pyramid-400">2026/09/21 (一)</span>
+                <h3 class="text-base font-bold text-white">台北 ✈ 伊斯坦堡（土耳其航空飛行夜）</h3>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 text-xs">
+              <span class="px-2.5 py-1 rounded bg-sand-900 border border-sand-700 text-slate-300">機上住宿</span>
+              <span class="px-2.5 py-1 rounded bg-sky-950 border border-sky-800 text-sky-300">TK025 21:45</span>
+            </div>
+          </div>
+          <div class="mt-3.5 space-y-2 text-xs sm:text-sm text-slate-300 leading-relaxed">
+            <p>齊集桃園國際機場第二航廈土耳其航空4號櫃檯，搭乘豪華客機飛往伊斯坦堡轉機前往埃及。</p>
+            <div class="bg-sand-900/70 p-3 rounded-xl border border-sand-700/60 text-xs space-y-1 text-slate-400">
+              <div><strong class="text-slate-200">集合時間：</strong>18:45 集合（自帶護照者請提早半小時約 18:15 繳交護照給領隊）。</div>
+              <div><strong class="text-slate-200">機上服務：</strong>長程段提供2餐，附贈盥洗包（牙刷牙膏、眼罩、耳塞、襪子、拖鞋）。</div>
+              <div><strong class="text-slate-200">餐食安排：</strong>早：自理 ｜ 午：自理 ｜ 晚：機上精緻簡餐。</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 2 -->
+        <div class="bg-sand-800 border border-amber-500/40 rounded-2xl p-4 sm:p-5 transition">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-sand-700/70 pb-3">
+            <div class="flex items-center gap-3">
+              <span class="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/50 text-amber-300 font-serif font-bold text-lg flex items-center justify-center">D2</span>
+              <div>
+                <span class="text-xs font-mono text-amber-400">2026/09/22 (二) ★重點過夜包日</span>
+                <h3 class="text-base font-bold text-white">開羅【穆罕默德阿里清真寺】➔ 旅館盥洗 ➔ 亞斯文夜臥火車</h3>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 text-xs">
+              <span class="px-2.5 py-1 rounded bg-amber-950/80 border border-amber-700 text-amber-300">國營夜臥火車 (N/TRAIN)</span>
+            </div>
+          </div>
+          <div class="mt-3.5 space-y-2.5 text-xs sm:text-sm text-slate-300 leading-relaxed">
+            <p>抵達開羅（09:05），造訪千塔之城開羅與矗立於薩拉丁要塞內的<strong>穆罕默德阿里清真寺</strong>（鄂圖曼風格、雪花石建材、宏偉穹頂）。傍晚安排旅館梳洗後搭乘臥舖火車奔馳前往亞斯文。</p>
+            
+            <!-- Warning Callout -->
+            <div class="bg-amber-950/30 border border-amber-500/40 rounded-xl p-3.5 text-xs space-y-1.5">
+              <div class="font-bold text-amber-300 flex items-center gap-1.5">
+                <i data-lucide="alert-triangle" class="w-4 h-4"></i>
+                說明會特別注意事項：
+              </div>
+              <ul class="list-disc list-inside space-y-1 text-slate-300">
+                <li><strong>火車前盥洗安排：</strong>前往火車站前會特別安排旅館給貴賓盥洗（<strong>4人一間，限2小時內完成</strong>）。</li>
+                <li><strong>準備獨立過夜包 / 登機箱：</strong>大行李箱放火車走道/床底不易翻找，請將今晚梳洗用品、保養卸妝、睡衣、充電器、薄外套單獨放入隨身過夜包。</li>
+                <li>火車包廂為兩人一室上下舖，有空調、洗手台、插座，<strong>但車上無淋浴間</strong>，夜間冷氣較涼記得備外套。</li>
+              </ul>
+            </div>
+
+            <div class="text-xs text-slate-400 pt-1">
+              <strong>餐食安排：</strong>早：機上精緻簡餐 ｜ 午：埃及風味料理 ｜ 晚：火車上套餐。
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 3 -->
+        <div class="bg-sand-800 border border-sand-700 rounded-2xl p-4 sm:p-5 transition hover:border-pyramid-500/50">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-sand-700/70 pb-3">
+            <div class="flex items-center gap-3">
+              <span class="w-10 h-10 rounded-xl bg-pyramid-500/10 border border-pyramid-500/30 text-pyramid-400 font-serif font-bold text-lg flex items-center justify-center">D3</span>
+              <div>
+                <span class="text-xs font-mono text-pyramid-400">2026/09/23 (三)</span>
+                <h3 class="text-base font-bold text-white">抵達亞斯文【亞斯文大水壩、三角風帆船】➔ 登尼羅河遊輪</h3>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 text-xs">
+              <span class="px-2.5 py-1 rounded bg-nile-950 border border-nile-800 text-sky-300">五星遊輪 M/S NILE ADMIRAL</span>
+            </div>
+          </div>
+          <div class="mt-3.5 space-y-2 text-xs sm:text-sm text-slate-300 leading-relaxed">
+            <p>清晨醒來已抵達南方850公里外的古城亞斯文。參觀調解尼羅河洪水的現代工程奇蹟<strong>亞斯文大水壩</strong>，午後搭乘埃及傳統<strong>三角風帆船 (Felucca)</strong>，伴隨微風與努比亞歌聲徜徉於尼羅河之上。</p>
+            <div class="bg-sand-900/70 p-3 rounded-xl border border-sand-700/60 text-xs space-y-1 text-slate-400">
+              <div><strong class="text-slate-200">遊輪生活備註：</strong>入住五星遊輪（面河外艙）。船上擁有甲板與泳池，航行間有悠閒自由活動時間。河輪發動機為柴油引擎，停泊時有正常低頻運轉聲。</div>
+              <div><strong class="text-slate-200">餐食安排：</strong>早：火車上早餐 ｜ 午：遊輪自助式或套餐 ｜ 晚：遊輪自助式或套餐。</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 4 -->
+        <div class="bg-sand-800 border border-sand-700 rounded-2xl p-4 sm:p-5 transition hover:border-pyramid-500/50">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-sand-700/70 pb-3">
+            <div class="flex items-center gap-3">
+              <span class="w-10 h-10 rounded-xl bg-pyramid-500/10 border border-pyramid-500/30 text-pyramid-400 font-serif font-bold text-lg flex items-center justify-center">D4</span>
+              <div>
+                <span class="text-xs font-mono text-pyramid-400">2026/09/24 (四) ★清晨公路車隊</span>
+                <h3 class="text-base font-bold text-white">亞斯文 ➔ (285KM) 阿布辛貝雙神殿 ➔ 康孟波雙神殿 ➔ 艾得夫</h3>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 text-xs">
+              <span class="px-2.5 py-1 rounded bg-nile-950 border border-nile-800 text-sky-300">五星遊輪 M/S NILE ADMIRAL</span>
+            </div>
+          </div>
+          <div class="mt-3.5 space-y-2 text-xs sm:text-sm text-slate-300 leading-relaxed">
+            <p>清晨4點跟隨沙漠護航車隊穿越撒哈拉沙漠（單程約3.5小時，沿途有機會目睹海市蜃樓）。參訪世界遺產<strong>阿布辛貝雙神殿</strong>（拉美西斯二世與王妃妮菲塔莉的絕壁岩刻神殿，近代移築搶救奇蹟）。午後遊輪巡航抵達<strong>康孟波雙神殿</strong>（全埃唯一雙神信仰：老鷹神霍魯斯與鱷魚神索貝克）。</p>
+            <div class="bg-sand-900/70 p-3 rounded-xl border border-sand-700/60 text-xs space-y-1 text-slate-400">
+              <div><strong class="text-slate-200">穿著提示：</strong>清晨出發車上無暖氣偏涼，需備薄長袖或外套；神殿正午炎熱高達35-36°C，防曬遮陽帽必備。</div>
+              <div><strong class="text-slate-200">餐食安排：</strong>早：遊輪早餐盒 ｜ 午：遊輪自助式或套餐 ｜ 晚：遊輪自助式或套餐。</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 5 -->
+        <div class="bg-sand-800 border border-sand-700 rounded-2xl p-4 sm:p-5 transition hover:border-pyramid-500/50">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-sand-700/70 pb-3">
+            <div class="flex items-center gap-3">
+              <span class="w-10 h-10 rounded-xl bg-pyramid-500/10 border border-pyramid-500/30 text-pyramid-400 font-serif font-bold text-lg flex items-center justify-center">D5</span>
+              <div>
+                <span class="text-xs font-mono text-pyramid-400">2026/09/25 (五)</span>
+                <h3 class="text-base font-bold text-white">艾得夫 ➔ 伊斯納水閘門 ➔ 路克索【路克索神殿、卡納克神殿】</h3>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 text-xs">
+              <span class="px-2.5 py-1 rounded bg-nile-950 border border-nile-800 text-sky-300">五星遊輪 M/S NILE ADMIRAL</span>
+            </div>
+          </div>
+          <div class="mt-3.5 space-y-2 text-xs sm:text-sm text-slate-300 leading-relaxed">
+            <p>遊輪通過調解尼羅河水位落差的<strong>伊斯納水匣門</strong>（觀賞小販划船在船舷邊熱鬧丟擲浴巾喊價討價還價）。午後抵達古都底比斯路克索，造訪雄偉壯觀的<strong>卡納克神殿</strong>（巨型多柱廳、全埃最高方尖碑）與<strong>路克索神殿</strong>。</p>
+            <div class="bg-sand-900/70 p-3 rounded-xl border border-sand-700/60 text-xs text-slate-400">
+              <strong class="text-slate-200">餐食安排：</strong>早：遊輪自助式 ｜ 午：遊輪自助式或套餐 ｜ 晚：遊輪自助式或套餐。
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 6 -->
+        <div class="bg-sand-800 border border-sand-700 rounded-2xl p-4 sm:p-5 transition hover:border-pyramid-500/50">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-sand-700/70 pb-3">
+            <div class="flex items-center gap-3">
+              <span class="w-10 h-10 rounded-xl bg-pyramid-500/10 border border-pyramid-500/30 text-pyramid-400 font-serif font-bold text-lg flex items-center justify-center">D6</span>
+              <div>
+                <span class="text-xs font-mono text-pyramid-400">2026/09/26 (六)</span>
+                <h3 class="text-base font-bold text-white">路克索【帝王谷、曼儂巨像】➔ (335KM) 紅海度假勝地 虎加達</h3>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 text-xs">
+              <span class="px-2.5 py-1 rounded bg-emerald-950 border border-emerald-800 text-emerald-300">AMC ROYAL HOTEL 虎加達</span>
+            </div>
+          </div>
+          <div class="mt-3.5 space-y-2 text-xs sm:text-sm text-slate-300 leading-relaxed">
+            <p>探索新王國法老長眠之地<strong>帝王谷</strong>（入內參觀三座色彩鮮明之法老陵寢）與<strong>曼儂巨像</strong>。午後專車穿越沙漠公路前往紅海度假勝地—虎加達，沿途感受一邊是金色沙漠、一邊是湛藍紅海的奇景。</p>
+            <div class="bg-sand-900/70 p-3 rounded-xl border border-sand-700/60 text-xs text-slate-400">
+              <strong class="text-slate-200">餐食安排：</strong>早：遊輪自助式 ｜ 午：埃及風味料理 ｜ 晚：飯店內自助式。
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 7 -->
+        <div class="bg-sand-800 border border-sand-700 rounded-2xl p-4 sm:p-5 transition hover:border-pyramid-500/50">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-sand-700/70 pb-3">
+            <div class="flex items-center gap-3">
+              <span class="w-10 h-10 rounded-xl bg-pyramid-500/10 border border-pyramid-500/30 text-pyramid-400 font-serif font-bold text-lg flex items-center justify-center">D7</span>
+              <div>
+                <span class="text-xs font-mono text-pyramid-400">2026/09/27 (日)</span>
+                <h3 class="text-base font-bold text-white">虎加達（紅海渡假勝地・全日自由活動）</h3>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 text-xs">
+              <span class="px-2.5 py-1 rounded bg-emerald-950 border border-emerald-800 text-emerald-300">AMC ROYAL HOTEL 虎加達</span>
+            </div>
+          </div>
+          <div class="mt-3.5 space-y-2 text-xs sm:text-sm text-slate-300 leading-relaxed">
+            <p>享受陽光（SUN）、海洋（SEA）與沙灘（SAND）。可於渡假飯店放鬆、泳池戲水，或自由報名自費行程：四輪傳動車衝沙拜訪貝都因人部落（$80美金），或搭乘玻璃底船浮潛飽覽紅海珊瑚礁群（$70美金）。</p>
+            <div class="bg-sand-900/70 p-3 rounded-xl border border-sand-700/60 text-xs text-slate-400">
+              <strong class="text-slate-200">餐食安排：</strong>早：旅館內自助式 ｜ 午：飯店內自助式 ｜ 晚：飯店內自助式。
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 8 -->
+        <div class="bg-sand-800 border border-sand-700 rounded-2xl p-4 sm:p-5 transition hover:border-pyramid-500/50">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-sand-700/70 pb-3">
+            <div class="flex items-center gap-3">
+              <span class="w-10 h-10 rounded-xl bg-pyramid-500/10 border border-pyramid-500/30 text-pyramid-400 font-serif font-bold text-lg flex items-center justify-center">D8</span>
+              <div>
+                <span class="text-xs font-mono text-pyramid-400">2026/09/28 (一) ★2025新館展品</span>
+                <h3 class="text-base font-bold text-white">虎加達 ➔ (485KM) 開羅【大埃及博物館 GEM、香精店、紙莎草畫】</h3>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 text-xs">
+              <span class="px-2.5 py-1 rounded bg-sand-900 border border-sand-700 text-slate-300">HELNAN DREAMLAND HOTEL</span>
+            </div>
+          </div>
+          <div class="mt-3.5 space-y-2 text-xs sm:text-sm text-slate-300 leading-relaxed">
+            <p>返回開羅，重磅造訪全球規模最大的<strong>大埃及博物館 (GEM)</strong>：欣賞入口高達11公尺之拉美西斯二世巨像，飽覽首度全貌呈現之圖坦卡門5000餘件黃金陪葬珍寶。隨後前往參觀法老御用<strong>香精工廠</strong>與千年技藝<strong>紙莎草畫工廠</strong>。</p>
+            <div class="bg-sand-900/70 p-3 rounded-xl border border-sand-700/60 text-xs text-slate-400">
+              <strong class="text-slate-200">餐食安排：</strong>早：飯店早餐盒 ｜ 午：埃及風味料理 ｜ 晚：中式料理合菜。
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 9 -->
+        <div class="bg-sand-800 border border-sand-700 rounded-2xl p-4 sm:p-5 transition hover:border-pyramid-500/50">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-sand-700/70 pb-3">
+            <div class="flex items-center gap-3">
+              <span class="w-10 h-10 rounded-xl bg-pyramid-500/10 border border-pyramid-500/30 text-pyramid-400 font-serif font-bold text-lg flex items-center justify-center">D9</span>
+              <div>
+                <span class="text-xs font-mono text-pyramid-400">2026/09/29 (二)</span>
+                <h3 class="text-base font-bold text-white">開羅【吉薩金字塔群、人面獅身像、哈利利市集】✈ 伊斯坦堡</h3>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 text-xs">
+              <span class="px-2.5 py-1 rounded bg-sky-950 border border-sky-800 text-sky-300">TK695 21:45</span>
+            </div>
+          </div>
+          <div class="mt-3.5 space-y-2 text-xs sm:text-sm text-slate-300 leading-relaxed">
+            <p>親臨四千年世界七大奇蹟<strong>吉薩三大金字塔</strong>（特別安排入內參觀一座金字塔探秘），守護者<strong>獅身人面像</strong>合影。傍晚至全中東最著名的迷宮市集<strong>哈利利市集 (Khan el-Khalili)</strong>，體驗濃厚異國情調與殺價樂趣。夜間前往機場辦理登機手續。</p>
+            <div class="bg-sand-900/70 p-3 rounded-xl border border-sand-700/60 text-xs text-slate-400">
+              <strong class="text-slate-200">餐食安排：</strong>早：旅館內自助 ｜ 午：埃及風味料理 ｜ 晚：機場面膜/餐食自理（因應辦理報到時間）。
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 10 -->
+        <div class="bg-sand-800 border border-sand-700 rounded-2xl p-4 sm:p-5 transition hover:border-pyramid-500/50">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-sand-700/70 pb-3">
+            <div class="flex items-center gap-3">
+              <span class="w-10 h-10 rounded-xl bg-pyramid-500/10 border border-pyramid-500/30 text-pyramid-400 font-serif font-bold text-lg flex items-center justify-center">D10</span>
+              <div>
+                <span class="text-xs font-mono text-pyramid-400">2026/09/30 (三)</span>
+                <h3 class="text-base font-bold text-white">伊斯坦堡 ✈ 台北桃園機場（平安返抵國門）</h3>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 text-xs">
+              <span class="px-2.5 py-1 rounded bg-sand-900 border border-sand-700 text-slate-300">17:55 抵達台北</span>
+            </div>
+          </div>
+          <div class="mt-3 text-xs sm:text-sm text-slate-300">
+            <p>班機於 17:55 抵達桃園國際機場，結束兼具神秘歷史古文明與紅海渡假的10日難忘之旅。</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="tab-packing" class="tab-content hidden space-y-5">
+      
+      <!-- Progress and Status -->
+      <div class="bg-sand-800 border border-sand-700 rounded-2xl p-5">
+        <div class="flex items-center justify-between mb-3">
+          <div>
+            <h2 class="text-base font-bold text-white flex items-center gap-2">
+              <i data-lucide="check-square" class="w-5 h-5 text-pyramid-400"></i>
+              行前行李打包檢核清單
+            </h2>
+            <p class="text-xs text-slate-400 mt-0.5">分類整理托運與隨身行李，點選即可勾選並自動保存進度</p>
+          </div>
+          <div class="text-right">
+            <span class="text-xl font-mono font-black text-pyramid-400" id="pack-progress-text">0%</span>
+            <div class="text-[10px] text-slate-400">已打包項目</div>
+          </div>
+        </div>
+        
+        <!-- Progress Bar -->
+        <div class="w-full bg-sand-900 h-2.5 rounded-full overflow-hidden border border-sand-700/60">
+          <div id="pack-progress-bar" class="bg-gradient-to-r from-pyramid-600 to-amber-300 h-full w-0 transition-all duration-300"></div>
+        </div>
+      </div>
+
+      <!-- Quick Category Toggle -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        
+        <!-- Column 1: 手提隨身行李 & 過夜包 -->
+        <div class="bg-sand-800/90 border border-sand-700 rounded-2xl p-5 space-y-4">
+          <div class="flex items-center justify-between border-b border-sand-700 pb-3">
+            <div class="flex items-center gap-2 text-sky-400 font-bold text-sm">
+              <i data-lucide="backpack" class="w-4 h-4"></i>
+              <span>手提隨身行李 ＆ D2過夜小包</span>
+            </div>
+            <span class="text-[11px] px-2 py-0.5 rounded bg-sky-950 border border-sky-800 text-sky-300">必須隨身帶</span>
+          </div>
+
+          <p class="text-[11px] text-slate-400 leading-relaxed">
+            ★ <strong>注意：</strong>鋰電池、行動電源（限2顆且飛機上禁用充電）、WIFI機<strong>嚴禁託運</strong>。第2天火車請備過夜包。
+          </p>
+
+          <div class="space-y-2.5 text-xs" id="pack-carryon-list">
+            <!-- Items injected by JS -->
+          </div>
+        </div>
+
+        <!-- Column 2: 託運行李 -->
+        <div class="bg-sand-800/90 border border-sand-700 rounded-2xl p-5 space-y-4">
+          <div class="flex items-center justify-between border-b border-sand-700 pb-3">
+            <div class="flex items-center gap-2 text-amber-400 font-bold text-sm">
+              <i data-lucide="luggage" class="w-4 h-4"></i>
+              <span>大件託運行李（土航2件各23kg）</span>
+            </div>
+            <span class="text-[11px] px-2 py-0.5 rounded bg-amber-950 border border-amber-800 text-amber-300">放行李箱</span>
+          </div>
+
+          <p class="text-[11px] text-slate-400 leading-relaxed">
+            ★ <strong>注意：</strong>指甲刀、剪刀、自拍棒、腳架、液體/乳液&gt;100ml均需放置託運行李。
+          </p>
+
+          <div class="space-y-2.5 text-xs" id="pack-checked-list">
+            <!-- Items injected by JS -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Add Custom Item Box -->
+      <div class="bg-sand-800/60 border border-sand-700 rounded-2xl p-4 flex flex-col sm:flex-row items-center gap-3">
+        <input type="text" id="new-pack-item" placeholder="自行新增攜帶物品名稱..." class="w-full sm:flex-1 bg-sand-900 border border-sand-700 rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-pyramid-500">
+        <select id="new-pack-category" class="w-full sm:w-auto bg-sand-900 border border-sand-700 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-pyramid-500">
+          <option value="carryon">手提 / 隨身過夜包</option>
+          <option value="checked">託運行李</option>
+        </select>
+        <button onclick="addCustomPackItem()" class="w-full sm:w-auto px-4 py-2 rounded-xl bg-pyramid-500 hover:bg-pyramid-400 text-black font-semibold text-xs transition flex items-center justify-center gap-1.5 shrink-0">
+          <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+          <span>新增物品</span>
+        </button>
+      </div>
+
+    </section>
+
+    <section id="tab-souvenir" class="tab-content hidden space-y-5">
+      
+      <!-- Souvenir Header & Quick Tips -->
+      <div class="bg-sand-800 border border-sand-700 rounded-2xl p-5">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <h2 class="text-base font-bold text-white flex items-center gap-2">
+              <i data-lucide="gift" class="w-5 h-5 text-amber-400"></i>
+              埃及必買伴手禮 Memo ＆ 購買清單
+            </h2>
+            <p class="text-xs text-slate-400 mt-1">自己勾選、記錄要買給誰與議價備註（哈利利市集、香精店、紙莎草畫、遊輪）</p>
+          </div>
+          <div class="flex gap-2">
+            <button onclick="filterSouvenir('all')" id="btn-filter-all" class="text-xs px-3 py-1.5 rounded-lg bg-sand-900 text-pyramid-400 border border-pyramid-500/40">全部</button>
+            <button onclick="filterSouvenir('pending')" id="btn-filter-pending" class="text-xs px-3 py-1.5 rounded-lg bg-sand-900 text-slate-400 border border-sand-700">尚未購買</button>
+            <button onclick="filterSouvenir('done')" id="btn-filter-done" class="text-xs px-3 py-1.5 rounded-lg bg-sand-900 text-slate-400 border border-sand-700">已採購</button>
+          </div>
+        </div>
+
+        <div class="mt-4 p-3 rounded-xl bg-sand-900/80 border border-sand-700/60 text-xs text-slate-300 flex items-center gap-2">
+          <i data-lucide="shopping-bag" class="w-4 h-4 text-pyramid-400 shrink-0"></i>
+          <span><strong>購物談判小密技：</strong>哈利利市集或景點小販務必大膽殺價（通常由標價的 3 折至 5 折談起）；店面或有冷氣咖啡廳多可刷卡。</span>
+        </div>
+      </div>
+
+      <!-- Add New Souvenir Input Form -->
+      <div class="bg-sand-800/90 border border-sand-700 rounded-2xl p-4 sm:p-5 space-y-3">
+        <h3 class="text-xs font-bold text-pyramid-400 uppercase tracking-wider">＋ 新增伴手禮項目</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-12 gap-2.5">
+          <input type="text" id="gift-name" placeholder="伴手禮名稱 (例: 埃及香精 / 象形文字銀飾)" class="sm:col-span-4 bg-sand-900 border border-sand-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-pyramid-500">
+          <input type="text" id="gift-target" placeholder="買給誰 (例: 家人 / 好友 / 自己)" class="sm:col-span-3 bg-sand-900 border border-sand-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-pyramid-500">
+          <input type="text" id="gift-notes" placeholder="備註/預算 (例: 蓮花香味、哈利利市集殺價)" class="sm:col-span-3 bg-sand-900 border border-sand-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-pyramid-500">
+          <button onclick="addSouvenir()" class="sm:col-span-2 px-3 py-2 rounded-xl bg-pyramid-500 hover:bg-pyramid-400 text-black font-bold text-xs transition flex items-center justify-center gap-1">
+            <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+            <span>加入清單</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Souvenirs List Cards -->
+      <div id="souvenir-container" class="space-y-2.5">
+        <!-- Injected via JavaScript -->
+      </div>
+
+    </section>
+
+    <section id="tab-briefing" class="tab-content hidden space-y-4">
+      
+      <!-- Key Briefing Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        
+        <!-- 1. 貨幣與換匯 -->
+        <div class="bg-sand-800 border border-sand-700 rounded-2xl p-5 space-y-3">
+          <div class="flex items-center gap-2 text-emerald-400 font-bold text-sm border-b border-sand-700 pb-2.5">
+            <i data-lucide="coins" class="w-4 h-4"></i>
+            <span>美金與換匯指引（說明會重點）</span>
+          </div>
+          <ul class="text-xs text-slate-300 space-y-2 leading-relaxed">
+            <li><strong class="text-white">攜帶金額：</strong>建議每人準備約 <strong>$800 美金</strong>。</li>
+            <li><strong class="text-white">小額散鈔配置：</strong>準備 <strong>$100 ~ $200 小額美金</strong>（建議面額：$10x15張, $5x10張, $1x30張），以便隨時支付每日行李、騎駱駝或私人小費。</li>
+            <li><strong class="text-amber-300">新版美金防偽：</strong>請換新版美金！除 1 美元外，新版美金人像後方「<strong>沒有圈圈</strong>」，舊版當地容易遭拒收。</li>
+            <li><strong class="text-white">換埃及鎊：</strong>上車後會有人協助換埃鎊，<strong>換約 30 美金即可</strong>（主要用於景點洗手間每次約5-10埃鎊與買水）。出境機場無法將埃鎊換回美金，勿換過多。</li>
+            <li><strong class="text-white">刷卡與小費墊付：</strong>有店面與咖啡廳多可刷卡；導遊領隊會先協助大家代墊零星小費（約 30-35 美金）。</li>
+          </ul>
+        </div>
+
+        <!-- 2. 氣溫與穿著防護 -->
+        <div class="bg-sand-800 border border-sand-700 rounded-2xl p-5 space-y-3">
+          <div class="flex items-center gap-2 text-amber-400 font-bold text-sm border-b border-sand-700 pb-2.5">
+            <i data-lucide="sun-medium" class="w-4 h-4"></i>
+            <span>氣候溫度與防沙塵必備</span>
+          </div>
+          <ul class="text-xs text-slate-300 space-y-2 leading-relaxed">
+            <li><strong class="text-white">氣溫預估：</strong>開羅中午最高約 32°C；亞斯文與路克索最高約 <strong>35~36°C</strong>；整段日夜溫差高達10-15度。</li>
+            <li><strong class="text-sky-300">防寒外套：</strong>飛機、遊覽車、夜臥火車冷氣強勁；阿布辛貝清晨公路出發時車內無暖氣，<strong>必帶保暖防風薄外套</strong>。</li>
+            <li><strong class="text-white">防沙抗旱五寶：</strong>埃及氣候極度乾燥多風沙，隨身務必準備：<strong>濕紙巾、乾洗手、口罩、護唇膏、保濕乳液</strong>。</li>
+            <li><strong class="text-white">文化穿著尊重：</strong>女性進入清真寺不可穿無袖、短裙褲，需備自備薄圍巾或頭巾；騎駱駝請穿長褲。</li>
+          </ul>
+        </div>
+
+        <!-- 3. 飯店備品與生活飲食 -->
+        <div class="bg-sand-800 border border-sand-700 rounded-2xl p-5 space-y-3">
+          <div class="flex items-center gap-2 text-indigo-400 font-bold text-sm border-b border-sand-700 pb-2.5">
+            <i data-lucide="hotel" class="w-4 h-4"></i>
+            <span>住宿備品與餐食習慣</span>
+          </div>
+          <ul class="text-xs text-slate-300 space-y-2 leading-relaxed">
+            <li><strong class="text-rose-400">飯店不提供一次性備品：</strong>務必自備<strong>牙刷、牙膏、拖鞋、刮鬍刀、個人生理用品</strong>。</li>
+            <li><strong class="text-white">轉接插頭：</strong>埃及電壓 220V 雙圓孔歐規，<strong>領隊出發時會統一發放轉接頭</strong>。</li>
+            <li><strong class="text-white">常備個人藥物：</strong>感冒藥、止瀉腸胃藥（水土不服）、暈車/暈船藥。自來水不可生飲，需飲用瓶裝礦泉水。</li>
+            <li><strong class="text-white">中東餐飲與零食：</strong>當地以烤肉、烤雞與香料料理為主，若擔心吃不慣可自備零食泡麵；<strong>注意：外包裝絕對不可有「豬肉圖案」或字樣</strong>。</li>
+            <li><strong class="text-white">國民外交互動：</strong>若走訪努比亞或貝都因部落，可隨身準備小糖果、小餅乾或原子筆分送當地小朋友。</li>
+          </ul>
+        </div>
+
+        <!-- 4. 團隊與緊急聯絡窗口 -->
+        <div class="bg-sand-800 border border-sand-700 rounded-2xl p-5 space-y-3">
+          <div class="flex items-center gap-2 text-rose-400 font-bold text-sm border-b border-sand-700 pb-2.5">
+            <i data-lucide="phone-call" class="w-4 h-4"></i>
+            <span>領隊與緊急聯絡電話</span>
+          </div>
+          <div class="text-xs space-y-2 text-slate-300">
+            <div class="p-2.5 rounded-xl bg-sand-900/90 border border-sand-700/70 flex justify-between items-center">
+              <div>
+                <span class="text-slate-400 block text-[10px]">專業隨團領隊</span>
+                <span class="font-bold text-white text-sm">王則鋼 先生</span>
+              </div>
+              <a href="tel:0938606757" class="px-3 py-1.5 rounded-lg bg-sand-800 text-pyramid-400 border border-pyramid-500/40 text-xs font-mono">0938-606-757</a>
+            </div>
+            <div class="grid grid-cols-2 gap-2 text-[11px]">
+              <div class="p-2 rounded-lg bg-sand-900 border border-sand-700">
+                <span class="text-slate-400 block">桃園T2 送機人員</span>
+                <span class="font-mono text-slate-200">0921-809-207</span>
+              </div>
+              <div class="p-2 rounded-lg bg-sand-900 border border-sand-700">
+                <span class="text-slate-400 block">機場緊急調度電話</span>
+                <span class="font-mono text-slate-200">0932-365-795</span>
+              </div>
+            </div>
+            <div class="text-[11px] text-slate-400 pt-1">
+              撥打回台灣：00 + 886 + 區碼去0 + 電話號碼
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="mt-auto py-6 bg-sand-950 border-t border-sand-800 text-center text-xs text-slate-500">
+    <div class="max-w-5xl mx-auto px-4 space-y-1">
+      <p class="text-slate-400 font-medium">特選埃及 10 日遊隨身手冊 ｜ 26XM921TK 埃及古文明巡禮</p>
+      <p class="text-[11px] font-mono text-slate-600">All data saved locally on your device. Have an unforgettable Nile journey!</p>
+    </div>
+  </footer>
+
+  <script>
+    // Tab Switching Logic
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.getElementById(tabId).classList.remove('hidden');
+
+      const tabs = ['itinerary', 'packing', 'souvenir', 'briefing'];
+      tabs.forEach(t => {
+        const btn = document.getElementById(`nav-${t}`);
+        if (`tab-${t}` === tabId) {
+          btn.className = 'tab-btn flex-1 min-w-[90px] py-3 text-xs sm:text-sm font-medium border-b-2 border-pyramid-500 text-pyramid-400 flex items-center justify-center gap-1.5 transition';
+        } else {
+          btn.className = 'tab-btn flex-1 min-w-[90px] py-3 text-xs sm:text-sm font-medium border-b-2 border-transparent text-slate-400 hover:text-slate-200 flex items-center justify-center gap-1.5 transition';
+        }
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Default Packing Items Data
+    const defaultPackingList = [
+      // Carry-on / Overnight Bag
+      { id: 'c1', name: '護照正本（效期6個月以上，集合提早交領隊）', category: 'carryon', checked: false },
+      { id: 'c2', name: '美金現鈔（800美，含100-200新版小額無圈圈）', category: 'carryon', checked: false },
+      { id: 'c3', name: '海外高回饋信用卡 / 提款卡', category: 'carryon', checked: false },
+      { id: 'c4', name: '手機＋充電線＋備用行動電源（限2顆，隨身嚴禁託運）', category: 'carryon', checked: false },
+      { id: 'c5', name: '防風保暖薄外套（機上、夜臥火車、阿布辛貝清晨防冷）', category: 'carryon', checked: false },
+      { id: 'c6', name: 'Day 2 火車過夜小包（睡衣、換洗衣物、簡易保養）', category: 'carryon', checked: false },
+      { id: 'c7', name: '抗乾燥保濕乳液、護唇膏（小瓶包裝）', category: 'carryon', checked: false },
+      { id: 'c8', name: '隨身濕紙巾、乾洗手、防風沙口罩', category: 'carryon', checked: false },
+      { id: 'c9', name: '個人隨身急用藥（暈車暈船藥、感冒藥、止痛藥）', category: 'carryon', checked: false },
+      { id: 'c10', name: '太陽眼鏡、遮陽帽、清真寺防曬薄頭巾/圍巾', category: 'carryon', checked: false },
+      { id: 'c11', name: '小糖果/小零食/原子筆（贈送當地部落孩童用）', category: 'carryon', checked: false },
+      
+      // Checked Baggage
+      { id: 'k1', name: '個人牙刷、牙膏、刮鬍刀（埃及飯店皆不提供）', category: 'checked', checked: false },
+      { id: 'k2', name: '個人生理用品（女性備用衛生棉條/棉片）', category: 'checked', checked: false },
+      { id: 'k3', name: '室內輕便拖鞋 / 涼鞋（飯店及遊輪無一次性拖鞋）', category: 'checked', checked: false },
+      { id: 'k4', name: '常備腸胃藥（水土不服、止瀉藥、胃乳等）', category: 'checked', checked: false },
+      { id: 'k5', name: '透氣棉質短袖、薄長褲（女性騎駱駝與寺廟穿著）', category: 'checked', checked: false },
+      { id: 'k6', name: '泳裝/泳帽（遊輪及紅海渡假村泳池使用）', category: 'checked', checked: false },
+      { id: 'k7', name: '指甲剪、修眉剪刀、自拍棒、相機腳架（必須託運）', category: 'checked', checked: false },
+      { id: 'k8', name: '大瓶防曬乳、曬後蘆薈膠、保濕面膜', category: 'checked', checked: false },
+      { id: 'k9', name: '耐走好穿休閒鞋/健走鞋（沙地古蹟行走）', category: 'checked', checked: false },
+      { id: 'k10', name: '點心零食/台灣泡麵（包裝絕不可有任何「豬」圖案）', category: 'checked', checked: false },
+      { id: 'k11', name: '保溫水壺（用餐時裝熱開水使用）', category: 'checked', checked: false },
+      { id: 'k12', name: '折疊式備用環保大購物袋（裝哈利利市集伴手禮）', category: 'checked', checked: false }
+    ];
+
+    // Default Souvenir List Data
+    const defaultSouvenirList = [
+      { id: 's1', name: '埃及香精 (Essence Oil)', target: '自己/好姊妹', notes: '蓮花香(Lotus)、生命之鑰；香精店或市集購買', checked: false },
+      { id: 's2', name: '紙莎草畫 (Papyrus Art)', target: '家人/家中擺設', notes: '確認是否真品紙莎草（柔軟不易裂），可寫象形文字名字', checked: false },
+      { id: 's3', name: '象形文字銀飾訂製手牌 (Cartouche)', target: '送自己/紀念', notes: '可刻英文名字拼音的法老象形框，純銀或K金', checked: false },
+      { id: 's4', name: '椰棗乾 / 椰棗夾杏仁', target: '同事/親友分享', notes: '甜而不膩，超市或市集多有小包裝盒裝', checked: false },
+      { id: 's5', name: '純棉埃及浴巾 / 駱駝圖騰圍巾', target: '長輩/朋友', notes: '伊斯納水閘門小販或市集購買，記得大力殺價！', checked: false },
+      { id: 's6', name: '金字塔 / 聖甲蟲小擺飾石雕', target: '朋友/小孩', notes: '雪花石或金屬製品，整組購買較划算', checked: false }
+    ];
+
+    // LocalStorage State Handlers
+    let packingItems = JSON.parse(localStorage.getItem('egypt_packing_items')) || defaultPackingList;
+    let souvenirItems = JSON.parse(localStorage.getItem('egypt_souvenir_items')) || defaultSouvenirList;
+    let currentSouvenirFilter = 'all';
+
+    function savePacking() {
+      localStorage.setItem('egypt_packing_items', JSON.stringify(packingItems));
+      renderPacking();
+    }
+
+    function saveSouvenirs() {
+      localStorage.setItem('egypt_souvenir_items', JSON.stringify(souvenirItems));
+      renderSouvenirs();
+    }
+
+    // Render Packing List
+    function renderPacking() {
+      const carryonBox = document.getElementById('pack-carryon-list');
+      const checkedBox = document.getElementById('pack-checked-list');
+      
+      carryonBox.innerHTML = '';
+      checkedBox.innerHTML = '';
+
+      let total = packingItems.length;
+      let completed = packingItems.filter(i => i.checked).length;
+
+      packingItems.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'flex items-center justify-between p-2 rounded-lg bg-sand-900/60 border border-sand-700/60 hover:border-sand-600 transition';
+        div.innerHTML = `
+          <div class="flex items-center space-x-2.5 flex-1 pr-2">
+            <input type="checkbox" id="chk-${item.id}" ${item.checked ? 'checked' : ''} onchange="togglePackItem('${item.id}')" class="rounded border-sand-700 bg-sand-950 text-pyramid-500 focus:ring-0 w-4 h-4 cursor-pointer">
+            <label for="chk-${item.id}" class="cursor-pointer ${item.checked ? 'line-through text-slate-500' : 'text-slate-200'} select-none">${item.name}</label>
+          </div>
+          <button onclick="deletePackItem('${item.id}')" class="text-slate-500 hover:text-rose-400 p-1 transition" title="刪除">
+            <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+          </button>
+        `;
+
+        if (item.category === 'carryon') {
+          carryonBox.appendChild(div);
+        } else {
+          checkedBox.appendChild(div);
+        }
+      });
+
+      // Update progress
+      const percent = total === 0 ? 0 : Math.round((completed / total) * 100);
+      document.getElementById('pack-progress-bar').style.width = `${percent}%`;
+      document.getElementById('pack-progress-text').textContent = `${percent}%`;
+
+      lucide.createIcons();
+    }
+
+    function togglePackItem(id) {
+      const it = packingItems.find(i => i.id === id);
+      if (it) {
+        it.checked = !it.checked;
+        savePacking();
+      }
+    }
+
+    function deletePackItem(id) {
+      packingItems = packingItems.filter(i => i.id !== id);
+      savePacking();
+    }
+
+    function addCustomPackItem() {
+      const input = document.getElementById('new-pack-item');
+      const cat = document.getElementById('new-pack-category').value;
+      const name = input.value.trim();
+
+      if (!name) return;
+
+      packingItems.push({
+        id: 'custom_' + Date.now(),
+        name: name,
+        category: cat,
+        checked: false
+      });
+
+      input.value = '';
+      savePacking();
+    }
+
+    // Render Souvenirs
+    function renderSouvenirs() {
+      const container = document.getElementById('souvenir-container');
+      container.innerHTML = '';
+
+      let list = souvenirItems;
+      if (currentSouvenirFilter === 'pending') {
+        list = list.filter(i => !i.checked);
+      } else if (currentSouvenirFilter === 'done') {
+        list = list.filter(i => i.checked);
+      }
+
+      if (list.length === 0) {
+        container.innerHTML = `
+          <div class="text-center py-10 text-slate-500 text-xs bg-sand-800/40 rounded-2xl border border-sand-700/40">
+            目前無符合項目，可由上方表單新增伴手禮計畫！
+          </div>
+        `;
+        return;
+      }
+
+      list.forEach(item => {
+        const card = document.createElement('div');
+        card.className = `p-3.5 rounded-xl border transition flex flex-col sm:flex-row sm:items-center justify-between gap-3 ${item.checked ? 'bg-sand-900/40 border-sand-800 text-slate-500' : 'bg-sand-800 border-sand-700 text-slate-200'}`;
+        card.innerHTML = `
+          <div class="flex items-start gap-3 flex-1">
+            <input type="checkbox" id="gift-${item.id}" ${item.checked ? 'checked' : ''} onchange="toggleSouvenir('${item.id}')" class="rounded border-sand-700 bg-sand-950 text-amber-400 focus:ring-0 w-4 h-4 mt-0.5 cursor-pointer">
+            <div class="space-y-1 flex-1">
+              <div class="flex flex-wrap items-center gap-2">
+                <label for="gift-${item.id}" class="font-bold text-sm cursor-pointer ${item.checked ? 'line-through text-slate-500' : 'text-white'}">
+                  ${item.name}
+                </label>
+                ${item.target ? `<span class="text-[10px] px-2 py-0.5 rounded-full ${item.checked ? 'bg-sand-800 text-slate-600' : 'bg-pyramid-500/20 text-pyramid-300 border border-pyramid-500/30'}">送：${item.target}</span>` : ''}
+              </div>
+              ${item.notes ? `<p class="text-xs ${item.checked ? 'text-slate-600' : 'text-slate-400'}">${item.notes}</p>` : ''}
+            </div>
+          </div>
+          <div class="flex items-center justify-end gap-2 shrink-0">
+            <span class="text-[11px] font-mono ${item.checked ? 'text-emerald-500' : 'text-slate-500'}">
+              ${item.checked ? '✓ 已購買' : '待採購'}
+            </span>
+            <button onclick="deleteSouvenir('${item.id}')" class="text-slate-500 hover:text-rose-400 p-1.5 rounded-lg hover:bg-sand-700/50 transition" title="刪除">
+              <i data-lucide="trash-2" class="w-4 h-4"></i>
+            </button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+
+      lucide.createIcons();
+    }
+
+    function toggleSouvenir(id) {
+      const it = souvenirItems.find(i => i.id === id);
+      if (it) {
+        it.checked = !it.checked;
+        saveSouvenirs();
+      }
+    }
+
+    function deleteSouvenir(id) {
+      souvenirItems = souvenirItems.filter(i => i.id !== id);
+      saveSouvenirs();
+    }
+
+    function addSouvenir() {
+      const nameInput = document.getElementById('gift-name');
+      const targetInput = document.getElementById('gift-target');
+      const notesInput = document.getElementById('gift-notes');
+
+      const name = nameInput.value.trim();
+      const target = targetInput.value.trim();
+      const notes = notesInput.value.trim();
+
+      if (!name) return;
+
+      souvenirItems.push({
+        id: 'gift_' + Date.now(),
+        name: name,
+        target: target,
+        notes: notes,
+        checked: false
+      });
+
+      nameInput.value = '';
+      targetInput.value = '';
+      notesInput.value = '';
+      saveSouvenirs();
+    }
+
+    function filterSouvenir(filter) {
+      currentSouvenirFilter = filter;
+      ['all', 'pending', 'done'].forEach(f => {
+        const btn = document.getElementById(`btn-filter-${f}`);
+        if (f === filter) {
+          btn.className = 'text-xs px-3 py-1.5 rounded-lg bg-sand-900 text-pyramid-400 border border-pyramid-500/40';
+        } else {
+          btn.className = 'text-xs px-3 py-1.5 rounded-lg bg-sand-900 text-slate-400 border border-sand-700';
+        }
+      });
+      renderSouvenirs();
+    }
+
+    // Initialize on Load
+    window.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      renderPacking();
+      renderSouvenirs();
+    });
+  </script>
+</body>
+</html>
+```
