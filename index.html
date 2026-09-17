@@ -81,6 +81,7 @@
       text-decoration: line-through;
       color: #9ca3af;
     }
+    .padd { padding-right:10px; }
   </style>
 </head>
 
@@ -95,7 +96,6 @@
         <div>
           <h1 class="text-sm sm:text-base font-bold text-white tracking-wide flex items-center gap-2">
             埃及特選 10 日遊
-            <span class="text-[11px] font-normal px-2 py-0.5 rounded bg-pyramid-500/20 text-pyramid-400 border border-pyramid-500/30">26XM921TK</span>
           </h1>
           <p class="text-[11px] text-slate-400">2026/09/21 - 09/30 ｜ 領隊：王則鋼 先生</p>
         </div>
@@ -111,19 +111,23 @@
 
     <!-- Main Navigation Tabs -->
     <div class="max-w-5xl mx-auto px-2 sm:px-6 flex border-t border-sand-800 overflow-x-auto no-scrollbar">
-      <button onclick="switchTab('tab-itinerary')" id="nav-itinerary" class="tab-btn flex-1 min-w-[90px] py-3 text-xs sm:text-sm font-medium border-b-2 border-pyramid-500 text-pyramid-400 flex items-center justify-center gap-1.5 transition">
+      <button onclick="switchTab('tab-itinerary')" id="nav-itinerary" class="tab-btn flex-1 min-w-[85px] py-3 text-xs sm:text-sm font-medium border-b-2 border-pyramid-500 text-pyramid-400 flex items-center justify-center gap-1.5 transition">
         <i data-lucide="calendar" class="w-4 h-4"></i>
-        <span>每日行程</span>
+        <span>行程</span>
       </button>
-      <button onclick="switchTab('tab-packing')" id="nav-packing" class="tab-btn flex-1 min-w-[100px] py-3 text-xs sm:text-sm font-medium border-b-2 border-transparent text-slate-400 hover:text-slate-200 flex items-center justify-center gap-1.5 transition">
+      <button onclick="switchTab('tab-expense')" id="nav-expense" class="tab-btn flex-1 min-w-[85px] py-3 text-xs sm:text-sm font-medium border-b-2 border-transparent text-slate-400 hover:text-slate-200 flex items-center justify-center gap-1.5 transition">
+        <i data-lucide="calculator" class="w-4 h-4"></i>
+        <span>記帳</span>
+      </button>
+      <button onclick="switchTab('tab-packing')" id="nav-packing" class="tab-btn flex-1 min-w-[85px] py-3 text-xs sm:text-sm font-medium border-b-2 border-transparent text-slate-400 hover:text-slate-200 flex items-center justify-center gap-1.5 transition">
         <i data-lucide="luggage" class="w-4 h-4"></i>
         <span>行前清單</span>
       </button>
-      <button onclick="switchTab('tab-souvenir')" id="nav-souvenir" class="tab-btn flex-1 min-w-[100px] py-3 text-xs sm:text-sm font-medium border-b-2 border-transparent text-slate-400 hover:text-slate-200 flex items-center justify-center gap-1.5 transition">
+      <button onclick="switchTab('tab-souvenir')" id="nav-souvenir" class="tab-btn flex-1 min-w-[85px] py-3 text-xs sm:text-sm font-medium border-b-2 border-transparent text-slate-400 hover:text-slate-200 flex items-center justify-center gap-1.5 transition">
         <i data-lucide="gift" class="w-4 h-4"></i>
-        <span>伴手禮 Memo</span>
+        <span>伴手禮</span>
       </button>
-      <button onclick="switchTab('tab-briefing')" id="nav-briefing" class="tab-btn flex-1 min-w-[90px] py-3 text-xs sm:text-sm font-medium border-b-2 border-transparent text-slate-400 hover:text-slate-200 flex items-center justify-center gap-1.5 transition">
+      <button onclick="switchTab('tab-briefing')" id="nav-briefing" class="tab-btn flex-1 min-w-[85px] py-3 text-xs sm:text-sm font-medium border-b-2 border-transparent text-slate-400 hover:text-slate-200 flex items-center justify-center gap-1.5 transition">
         <i data-lucide="shield-alert" class="w-4 h-4"></i>
         <span>說明會速查</span>
       </button>
@@ -132,7 +136,7 @@
 
   <main class="flex-1 max-w-5xl w-full mx-auto p-4 sm:p-6 space-y-6">
 
-    <!-- Top Key Notice Banner (Dynamic highlights from user briefing) -->
+    <!-- Top Key Notice Banner -->
     <div class="bg-gradient-to-r from-amber-950/40 via-sand-800 to-sand-800 border border-amber-500/30 rounded-2xl p-4 sm:p-5 shadow-lg">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-sand-700/60 pb-3 mb-3">
         <div class="flex items-center space-x-2 text-amber-400 text-xs sm:text-sm font-semibold">
@@ -142,35 +146,90 @@
         <div class="flex flex-wrap gap-2 text-[11px] text-slate-300">
           <span class="px-2 py-0.5 rounded bg-sand-900/80 border border-sand-700">開羅 18~32°C</span>
           <span class="px-2 py-0.5 rounded bg-sand-900/80 border border-sand-700">南埃 23~36°C</span>
-          <span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">美金預備：800美</span>
         </div>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs text-slate-300">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-slate-300">
         <div class="flex items-start gap-2 bg-sand-900/40 p-2.5 rounded-xl border border-sand-700/40">
           <i data-lucide="briefcase" class="w-4 h-4 text-pyramid-400 shrink-0 mt-0.5"></i>
-          <div><strong class="text-white">Day 2 夜臥火車過夜包：</strong>當晚4人一間盥洗(2hr內)，大行李不搬，請備登機箱或手提過夜包。</div>
+          <div><strong class="text-white">Day 2 夜臥火車過夜包：</strong>當晚4人一間盥洗(2hr內)，請準備登機箱或手提過夜/盥洗包。</div>
         </div>
         <div class="flex items-start gap-2 bg-sand-900/40 p-2.5 rounded-xl border border-sand-700/40">
           <i data-lucide="thermometer-snowflake" class="w-4 h-4 text-sky-400 shrink-0 mt-0.5"></i>
-          <div><strong class="text-white">必帶外套防強冷：</strong>飛機、臥鋪火車冷氣強；日夜溫差極大且風沙乾燥。</div>
-        </div>
-        <div class="flex items-start gap-2 bg-sand-900/40 p-2.5 rounded-xl border border-sand-700/40">
-          <i data-lucide="banknote" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i>
-          <div><strong class="text-white">美金小額散鈔：</strong>100-200元小額($10x15, $5x10, $1x30)，注意新版人像無圈圈。</div>
+          <div><strong class="text-white">必帶外套：</strong>飛機、臥鋪火車上冷氣強；日夜溫差極大且風沙乾燥。</div>
         </div>
       </div>
     </div>
 
-    <section id="tab-itinerary" class="tab-content space-y-4">
+    <section id="tab-itinerary" class="tab-content space-y-5">
       
-      <!-- Flight & Hotel Quick Bar -->
-      <div class="flex flex-wrap gap-2 items-center justify-between bg-sand-800/80 border border-sand-700 p-3 rounded-xl text-xs">
-        <div class="flex items-center gap-2 text-slate-300">
-          <i data-lucide="plane-takeoff" class="w-4 h-4 text-pyramid-400"></i>
-          <span>土耳其航空 TK025/TK690 (桃園T2 9/21 18:45集合，自帶護照可18:15到)</span>
+      <!-- Route Map Visual Card -->
+      <div class="bg-sand-800 border border-sand-700 rounded-2xl overflow-hidden shadow-lg">
+        <div class="p-3.5 bg-sand-900/90 border-b border-sand-700 flex items-center justify-between">
+          <div class="flex items-center gap-2 text-xs font-bold text-white">
+            <i data-lucide="map" class="w-4 h-4 text-pyramid-400"></i>
+            <span>埃及旅遊路線參考地圖（開羅 ➔ 亞斯文 ➔ 康孟波 ➔ 艾得夫 ➔ 路克索 ➔ 虎加達 ➔ 開羅）</span>
+          </div>
+          <span class="text-[10px] px-2 py-0.5 rounded bg-sand-800 text-slate-400 border border-sand-700">全覽路線</span>
         </div>
-        <div class="flex items-center gap-2 text-slate-400">
-          <span>全程四晚遊輪＋一晚夜臥火車＋五星飯店</span>
+        <div class="p-2 sm:p-4 bg-[#bfe5f9]/20 flex justify-center items-center">
+          <img src="https://static.liontech.com.tw/GitzAPData/PublicationStatic/_ModelFile/ImageText/4485328/d9acc737e9414996ba76c4779081847e.jpg">
+        </div>
+      </div>
+
+      <!-- Flight & Hotel Details Bar with PDF Flight Tables -->
+      <div class="bg-sand-800/95 border border-sand-700 rounded-2xl p-4 sm:p-5 space-y-4 shadow-lg">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-sand-700 pb-3">
+          <div class="flex items-center gap-2 text-pyramid-400 font-bold text-sm">
+            <i data-lucide="plane-takeoff" class="w-5 h-5"></i>
+            <span>航班資訊（土耳其航空）</span>
+          </div>
+          <div class="text-xs text-amber-300 font-medium">
+            桃園T2 9/21 18:45集合（自帶護照者，提早於 18:15 到達繳交）
+          </div>
+        </div>
+
+        <!-- Flights Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5 text-xs">
+          <!-- Outbound -->
+          <div class="bg-sand-900/80 border border-sand-700/80 rounded-xl p-3.5 space-y-2">
+            <div class="flex items-center justify-between text-sky-400 font-semibold border-b border-sand-800 pb-1.5">
+              <span class="flex items-center gap-1.5"><i data-lucide="plane" class="w-3.5 h-3.5"></i> 去程（台北 ➔ 伊斯坦堡 ➔ 開羅）</span>
+              <span class="text-[10px] px-1.5 py-0.5 rounded bg-sky-950 border border-sky-800">土耳其航空</span>
+            </div>
+            <div class="space-y-1.5 text-slate-300">
+              <div class="flex justify-between py-0.5 border-b border-sand-800/50">
+                <span class="font-mono text-white font-bold padd">TK025</span>
+                <span>2026/09/21 21:45 桃園機場(T2) ➔ 09/22 05:10 伊斯坦堡 (飛行12h25m)</span>
+              </div>
+              <div class="flex justify-between py-0.5">
+                <span class="font-mono text-white font-bold padd">TK690</span>
+                <span>2026/09/22 06:45 伊斯坦堡 ➔ 09/22 09:05 開羅機場 (飛行02h20m)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Inbound -->
+          <div class="bg-sand-900/80 border border-sand-700/80 rounded-xl p-3.5 space-y-2">
+            <div class="flex items-center justify-between text-amber-400 font-semibold border-b border-sand-800 pb-1.5">
+              <span class="flex items-center gap-1.5"><i data-lucide="plane-landing" class="w-3.5 h-3.5"></i> 回程（開羅 ➔ 伊斯坦堡 ➔ 台北）</span>
+              <span class="text-[10px] px-1.5 py-0.5 rounded bg-amber-950 border border-amber-800">土耳其航空</span>
+            </div>
+            <div class="space-y-1.5 text-slate-300">
+              <div class="flex justify-between py-0.5 border-b border-sand-800/50">
+                <span class="font-mono text-white font-bold padd">TK695</span>
+                <span>2026/09/29 21:45 開羅機場 ➔ 09/30 00:05 伊斯坦堡 (飛行02h20m)</span>
+              </div>
+              <div class="flex justify-between py-0.5">
+                <span class="font-mono text-white font-bold padd">TK024</span>
+                <span>2026/09/30 01:30 伊斯坦堡 ➔ 09/30 17:55 桃園機場(T2) (飛行11h25m)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-between gap-2 pt-1 text-[11px] text-slate-400">
+          <div><strong class="text-slate-300">託運行李額度：</strong>土航經濟艙免費託運 2 件（每件限重 23kg）</div>
+          <div><strong class="text-slate-300">住宿配置：</strong>四晚五星河輪 + 一晚夜臥火車 + 三晚五星飯店</div>
         </div>
       </div>
 
@@ -219,6 +278,18 @@
           <div class="mt-3.5 space-y-2.5 text-xs sm:text-sm text-slate-300 leading-relaxed">
             <p>抵達開羅（09:05），造訪千塔之城開羅與矗立於薩拉丁要塞內的<strong>穆罕默德阿里清真寺</strong>（鄂圖曼風格、雪花石建材、宏偉穹頂）。傍晚安排旅館梳洗後搭乘臥舖火車奔馳前往亞斯文。</p>
             
+            <!-- Day 2 Photos -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+              <div class="relative h-44 sm:h-52 rounded-xl overflow-hidden border border-sand-700/60 group bg-sand-950">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrX8A9cL2AL2R17xNd4NbkWuFSZlP-CAuElwbnX4AcQlOVsPHZIIAcdprw&s=10" alt="穆罕默德阿里清真寺" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e1f24/d4af37?text=Mohamed+Ali+Mosque'">
+                <span class="absolute bottom-2 left-2 text-[11px] px-2 py-0.5 rounded bg-black/70 backdrop-blur-sm text-slate-200">穆罕默德阿里清真寺</span>
+              </div>
+              <div class="relative h-44 sm:h-52 rounded-xl overflow-hidden border border-sand-700/60 group bg-sand-950">
+                <img src="https://farm66.static.flickr.com/65535/53478318726_74df67a6a9_b.jpg" alt="薩拉丁要塞與清真寺遠景" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e1f24/d4af37?text=Citadel+Cairo'">
+                <span class="absolute bottom-2 left-2 text-[11px] px-2 py-0.5 rounded bg-black/70 backdrop-blur-sm text-slate-200">開羅古城堡薩拉丁要塞</span>
+              </div>
+            </div>
+
             <!-- Warning Callout -->
             <div class="bg-amber-950/30 border border-amber-500/40 rounded-xl p-3.5 text-xs space-y-1.5">
               <div class="font-bold text-amber-300 flex items-center gap-1.5">
@@ -254,6 +325,19 @@
           </div>
           <div class="mt-3.5 space-y-2 text-xs sm:text-sm text-slate-300 leading-relaxed">
             <p>清晨醒來已抵達南方850公里外的古城亞斯文。參觀調解尼羅河洪水的現代工程奇蹟<strong>亞斯文大水壩</strong>，午後搭乘埃及傳統<strong>三角風帆船 (Felucca)</strong>，伴隨微風與努比亞歌聲徜徉於尼羅河之上。</p>
+
+            <!-- Day 3 Photos -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+              <div class="relative h-44 sm:h-52 rounded-xl overflow-hidden border border-sand-700/60 group bg-sand-950">
+                <img src="https://yuartheworld.com/wp-content/uploads/2023/08/083002-scaled.jpg" alt="亞斯文大水壩" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e1f24/d4af37?text=Aswan+High+Dam'">
+                <span class="absolute bottom-2 left-2 text-[11px] px-2 py-0.5 rounded bg-black/70 backdrop-blur-sm text-slate-200">亞斯文大水壩</span>
+              </div>
+              <div class="relative h-44 sm:h-52 rounded-xl overflow-hidden border border-sand-700/60 group bg-sand-950">
+                <img src="https://image.cdn-eztravel.com.tw/c0C2XugO3Or9mku5w5wYTHSLGcATQjuyx07T8x9PNU8/rs:fill:0:450:1/g:sm/aHR0cHM6Ly92YWNhdGlvbi5jZG4tZXp0cmF2ZWwuY29tLnR3L2ltZy9WRFIvRUdfOTYwNjUzNDUuanBn.jpeg" alt="尼羅河三角風帆船" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e1f24/d4af37?text=Felucca+Nile'">
+                <span class="absolute bottom-2 left-2 text-[11px] px-2 py-0.5 rounded bg-black/70 backdrop-blur-sm text-slate-200">尼羅河三角風帆船體驗</span>
+              </div>
+            </div>
+
             <div class="bg-sand-900/70 p-3 rounded-xl border border-sand-700/60 text-xs space-y-1 text-slate-400">
               <div><strong class="text-slate-200">遊輪生活備註：</strong>入住五星遊輪（面河外艙）。船上擁有甲板與泳池，航行間有悠閒自由活動時間。河輪發動機為柴油引擎，停泊時有正常低頻運轉聲。</div>
               <div><strong class="text-slate-200">餐食安排：</strong>早：火車上早餐 ｜ 午：遊輪自助式或套餐 ｜ 晚：遊輪自助式或套餐。</div>
@@ -277,6 +361,23 @@
           </div>
           <div class="mt-3.5 space-y-2 text-xs sm:text-sm text-slate-300 leading-relaxed">
             <p>清晨4點跟隨沙漠護航車隊穿越撒哈拉沙漠（單程約3.5小時，沿途有機會目睹海市蜃樓）。參訪世界遺產<strong>阿布辛貝雙神殿</strong>（拉美西斯二世與王妃妮菲塔莉的絕壁岩刻神殿，近代移築搶救奇蹟）。午後遊輪巡航抵達<strong>康孟波雙神殿</strong>（全埃唯一雙神信仰：老鷹神霍魯斯與鱷魚神索貝克）。</p>
+
+            <!-- Day 4 Photos (3 images grid) -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1">
+              <div class="relative h-44 rounded-xl overflow-hidden border border-sand-700/60 group bg-sand-950">
+                <img src="https://static.liontech.com.tw/GitzAPData/PublicationStatic/_ModelFile/ImageText/4485363/a536311e66444489ace45c5fd823befa.jpg" alt="阿布辛貝雙神殿外觀" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e1f24/d4af37?text=Abu+Simbel'">
+                <span class="absolute bottom-2 left-2 text-[11px] px-2 py-0.5 rounded bg-black/70 backdrop-blur-sm text-slate-200">阿布辛貝雙神殿</span>
+              </div>
+              <div class="relative h-44 rounded-xl overflow-hidden border border-sand-700/60 group bg-sand-950">
+                <img src="https://media.istockphoto.com/id/1305921582/zh/%E7%85%A7%E7%89%87/%E8%B5%B0%E5%9C%A8%E9%98%BF%E5%B8%83%E8%BE%9B%E8%B2%9D%E7%88%BE%E5%AF%BA%E5%BB%9F%E5%85%A7%E7%9A%84%E5%A9%A6%E5%A5%B3.jpg?s=612x612&w=0&k=20&c=3TKPnhFu91C38lXrosianYkpF9ZQ9T5nVcpJWgFHg-I=" alt="阿布辛貝神殿內部列柱廳" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e1f24/d4af37?text=Abu+Simbel+Interior'">
+                <span class="absolute bottom-2 left-2 text-[11px] px-2 py-0.5 rounded bg-black/70 backdrop-blur-sm text-slate-200">阿布辛貝神殿內柱廳</span>
+              </div>
+              <div class="relative h-44 rounded-xl overflow-hidden border border-sand-700/60 group bg-sand-950">
+                <img src="https://static.liontech.com.tw/GitzAPData/PublicationStatic/_ModelFile/Product/4485372/c175fd7adc1f4bfeb0bf94565c4f5a25.jpg" alt="康孟波雙神殿" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e1f24/d4af37?text=Kom+Ombo'">
+                <span class="absolute bottom-2 left-2 text-[11px] px-2 py-0.5 rounded bg-black/70 backdrop-blur-sm text-slate-200">康孟波雙神殿</span>
+              </div>
+            </div>
+
             <div class="bg-sand-900/70 p-3 rounded-xl border border-sand-700/60 text-xs space-y-1 text-slate-400">
               <div><strong class="text-slate-200">穿著提示：</strong>清晨出發車上無暖氣偏涼，需備薄長袖或外套；神殿正午炎熱高達35-36°C，防曬遮陽帽必備。</div>
               <div><strong class="text-slate-200">餐食安排：</strong>早：遊輪早餐盒 ｜ 午：遊輪自助式或套餐 ｜ 晚：遊輪自助式或套餐。</div>
@@ -300,6 +401,19 @@
           </div>
           <div class="mt-3.5 space-y-2 text-xs sm:text-sm text-slate-300 leading-relaxed">
             <p>遊輪通過調解尼羅河水位落差的<strong>伊斯納水匣門</strong>（觀賞小販划船在船舷邊熱鬧丟擲浴巾喊價討價還價）。午後抵達古都底比斯路克索，造訪雄偉壯觀的<strong>卡納克神殿</strong>（巨型多柱廳、全埃最高方尖碑）與<strong>路克索神殿</strong>。</p>
+
+            <!-- Day 5 Photos -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+              <div class="relative h-44 sm:h-52 rounded-xl overflow-hidden border border-sand-700/60 group bg-sand-950">
+                <img src="https://static.liontech.com.tw/GitzAPData/PublicationStatic/_ModelFile/Product/4485353/7fdba12d1df74f10af01448dcc793929.jpg" alt="卡納克神殿" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e1f24/d4af37?text=Karnak+Temple'">
+                <span class="absolute bottom-2 left-2 text-[11px] px-2 py-0.5 rounded bg-black/70 backdrop-blur-sm text-slate-200">卡納克神殿巨柱廳</span>
+              </div>
+              <div class="relative h-44 sm:h-52 rounded-xl overflow-hidden border border-sand-700/60 group bg-sand-950">
+                <img src="https://static.liontech.com.tw/GitzAPData/PublicationStatic/_ModelFile/Product/4485354/b04962151ac14b9c889d8e64b05b0863.jpg" alt="路克索神殿" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e1f24/d4af37?text=Luxor+Temple'">
+                <span class="absolute bottom-2 left-2 text-[11px] px-2 py-0.5 rounded bg-black/70 backdrop-blur-sm text-slate-200">路克索神殿</span>
+              </div>
+            </div>
+
             <div class="bg-sand-900/70 p-3 rounded-xl border border-sand-700/60 text-xs text-slate-400">
               <strong class="text-slate-200">餐食安排：</strong>早：遊輪自助式 ｜ 午：遊輪自助式或套餐 ｜ 晚：遊輪自助式或套餐。
             </div>
@@ -323,6 +437,19 @@
           <div class="mt-3.5 space-y-2 text-xs sm:text-sm text-slate-300 leading-relaxed">
             <p>探索新王國法老長眠之地<strong>帝王谷</strong>（入內參觀三座色彩鮮明之法老陵寢）與<strong>曼儂巨像</strong>。午後專車穿越沙漠公路前往紅海度假勝地—虎加達，沿途感受一邊是金色沙漠、一邊是湛藍紅海的奇景。</p>
             <div class="bg-sand-900/70 p-3 rounded-xl border border-sand-700/60 text-xs text-slate-400">
+
+            <!-- Day 6 Photos -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+              <div class="relative h-44 sm:h-52 rounded-xl overflow-hidden border border-sand-700/60 group bg-sand-950">
+                <img src="https://sundaytour.com.tw/upfiles/chinese/attractions/tw_attractions_caty01657179344.jpg" alt="帝王谷" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e1f24/d4af37?text=Valley+of+the+Kings'">
+                <span class="absolute bottom-2 left-2 text-[11px] px-2 py-0.5 rounded bg-black/70 backdrop-blur-sm text-slate-200">帝王谷內部壁畫</span>
+              </div>
+              <div class="relative h-44 sm:h-52 rounded-xl overflow-hidden border border-sand-700/60 group bg-sand-950">
+                <img src="https://www.sundaynews.tw/upload/article/MainPhotoFileName_50_20250819002629315.jpg" alt="帝王谷外部" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e1f24/d4af37?text=Colossi+of+Memnon'">
+                <span class="absolute bottom-2 left-2 text-[11px] px-2 py-0.5 rounded bg-black/70 backdrop-blur-sm text-slate-200">帝王谷外部</span>
+              </div>
+            </div>
+
               <strong class="text-slate-200">餐食安排：</strong>早：遊輪自助式 ｜ 午：埃及風味料理 ｜ 晚：飯店內自助式。
             </div>
           </div>
@@ -342,8 +469,63 @@
               <span class="px-2.5 py-1 rounded bg-emerald-950 border border-emerald-800 text-emerald-300">AMC ROYAL HOTEL 虎加達</span>
             </div>
           </div>
-          <div class="mt-3.5 space-y-2 text-xs sm:text-sm text-slate-300 leading-relaxed">
-            <p>享受陽光（SUN）、海洋（SEA）與沙灘（SAND）。可於渡假飯店放鬆、泳池戲水，或自由報名自費行程：四輪傳動車衝沙拜訪貝都因人部落（$80美金），或搭乘玻璃底船浮潛飽覽紅海珊瑚礁群（$70美金）。</p>
+          <div class="mt-3.5 space-y-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
+            <p>享受陽光（SUN）、海洋（SEA）與沙灘（SAND）。可於渡假飯店放鬆休憩、享受泳池與私人沙灘散步，體驗真正悠閒的紅海假期。</p>
+
+            <!-- Day 7 Photo -->
+            <div class="pt-1">
+              <div class="relative h-48 sm:h-64 rounded-xl overflow-hidden border border-sand-700/60 group bg-sand-950">
+                <img src="https://sobitolife.com/wp-content/uploads/timeline_20190616_192354.jpg" alt="貝都因村落" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy" onerror="this.src='https://placehold.co/800x400/1e1f24/d4af37?text=Hurghada+Red+Sea'">
+                <span class="absolute bottom-2 left-2 text-[11px] px-2 py-0.5 rounded bg-black/70 backdrop-blur-sm text-slate-200">騎駱駝探訪貝都因村落</span>
+              </div>
+            </div>
+
+            <!-- Independent Optional Activities Cards -->
+            <div class="space-y-2 pt-1">
+              <span class="text-xs font-bold text-amber-400 flex items-center gap-1.5">
+                <i data-lucide="compass" class="w-4 h-4"></i>
+                自由參加自費行程推薦（現場報名）：
+              </span>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                <!-- Activity 1 -->
+                <div class="bg-sand-900/90 border border-amber-500/30 rounded-xl p-3.5 space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="font-bold text-white text-xs flex items-center gap-1.5">
+                      <i data-lucide="truck" class="w-3.5 h-3.5 text-amber-400"></i>
+                      四輪傳動車衝沙・訪貝都因村落
+                    </span>
+                    <span class="text-xs font-mono text-amber-300 bg-amber-950/80 px-2 py-0.5 rounded border border-amber-800">$80 美金/人</span>
+                  </div>
+                  <p class="text-xs text-slate-400 leading-relaxed">
+                    搭乘 4WD 四輪傳動越野車馳騁於茫茫撒哈拉沙漠，前往拜訪貝都因人村落，體驗遊牧民族的沙漠生活方式與招待茶點（來回約 3 小時，含小費）。
+                  </p>
+                  <div class="p-2 rounded-lg bg-sand-950/80 border border-sand-800 text-[11px] text-amber-300 flex items-start gap-1.5">
+                    <i data-lucide="heart-handshake" class="w-3.5 h-3.5 shrink-0 mt-0.5 text-amber-400"></i>
+                    <span><strong>貼心準備：</strong>可事先準備<strong>小零食、糖果或原子筆</strong>分送給當地的部落小朋友們！</span>
+                  </div>
+                </div>
+
+                <!-- Activity 2 -->
+                <div class="bg-sand-900/90 border border-sky-500/30 rounded-xl p-3.5 space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="font-bold text-white text-xs flex items-center gap-1.5">
+                      <i data-lucide="waves" class="w-3.5 h-3.5 text-sky-400"></i>
+                      玻璃底船出海 ＋ 紅海浮潛體驗
+                    </span>
+                    <span class="text-xs font-mono text-sky-300 bg-sky-950/80 px-2 py-0.5 rounded border border-sky-800">$70 美金/人</span>
+                  </div>
+                  <p class="text-xs text-slate-400 leading-relaxed">
+                    搭乘玻璃底船欣賞不受海面風浪影響的紅海海底奇觀，飽覽五彩繽紛的熱帶魚群與珊瑚礁生態；並安排下海浮潛體驗（玻璃船約45分+浮潛約45分，含小費）。
+                  </p>
+                  <div class="p-2 rounded-lg bg-sand-950/80 border border-sand-800 text-[11px] text-sky-300 flex items-center gap-1.5">
+                    <i data-lucide="info" class="w-3.5 h-3.5 shrink-0 text-sky-400"></i>
+                    <span>請自備泳衣泳裝，飯店提供大型沙灘浴巾租借。</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div class="bg-sand-900/70 p-3 rounded-xl border border-sand-700/60 text-xs text-slate-400">
               <strong class="text-slate-200">餐食安排：</strong>早：旅館內自助式 ｜ 午：飯店內自助式 ｜ 晚：飯店內自助式。
             </div>
@@ -366,6 +548,15 @@
           </div>
           <div class="mt-3.5 space-y-2 text-xs sm:text-sm text-slate-300 leading-relaxed">
             <p>返回開羅，重磅造訪全球規模最大的<strong>大埃及博物館 (GEM)</strong>：欣賞入口高達11公尺之拉美西斯二世巨像，飽覽首度全貌呈現之圖坦卡門5000餘件黃金陪葬珍寶。隨後前往參觀法老御用<strong>香精工廠</strong>與千年技藝<strong>紙莎草畫工廠</strong>。</p>
+
+            <!-- Day 8 Photo -->
+            <div class="pt-1">
+              <div class="relative h-48 sm:h-64 rounded-xl overflow-hidden border border-sand-700/60 group bg-sand-950">
+                <img src="https://static.liontech.com.tw/GitzAPData/PublicationStatic/_ModelFile/ImageText/4485351/8b67c75b76dd47d18de5eddd35ffe712.jpg" alt="大埃及博物館" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy" onerror="this.src='https://placehold.co/800x400/1e1f24/d4af37?text=Grand+Egyptian+Museum'">
+                <span class="absolute bottom-2 left-2 text-[11px] px-2 py-0.5 rounded bg-black/70 backdrop-blur-sm text-slate-200">大埃及博物館 (GEM)</span>
+              </div>
+            </div>
+
             <div class="bg-sand-900/70 p-3 rounded-xl border border-sand-700/60 text-xs text-slate-400">
               <strong class="text-slate-200">餐食安排：</strong>早：飯店早餐盒 ｜ 午：埃及風味料理 ｜ 晚：中式料理合菜。
             </div>
@@ -388,6 +579,19 @@
           </div>
           <div class="mt-3.5 space-y-2 text-xs sm:text-sm text-slate-300 leading-relaxed">
             <p>親臨四千年世界七大奇蹟<strong>吉薩三大金字塔</strong>（特別安排入內參觀一座金字塔探秘），守護者<strong>獅身人面像</strong>合影。傍晚至全中東最著名的迷宮市集<strong>哈利利市集 (Khan el-Khalili)</strong>，體驗濃厚異國情調與殺價樂趣。夜間前往機場辦理登機手續。</p>
+
+            <!-- Day 9 Photos -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+              <div class="relative h-44 sm:h-52 rounded-xl overflow-hidden border border-sand-700/60 group bg-sand-950">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmNyHq50XykY9M-PX1alsP6nOEOwNCJy0TR_Z_POm4hlLCwRjk_muv_xlB&s=10" alt="吉薩金字塔群與人面獅身像" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e1f24/d4af37?text=Pyramids+of+Giza'">
+                <span class="absolute bottom-2 left-2 text-[11px] px-2 py-0.5 rounded bg-black/70 backdrop-blur-sm text-slate-200">吉薩金字塔群與人面獅身像</span>
+              </div>
+              <div class="relative h-44 sm:h-52 rounded-xl overflow-hidden border border-sand-700/60 group bg-sand-950">
+                <img src="https://www.sundaytour.com.tw/upfiles/chinese/attractions/tw_attractions_caty01593496674.jpg" alt="哈利利大市集" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e1f24/d4af37?text=Khan+el-Khalili'">
+                <span class="absolute bottom-2 left-2 text-[11px] px-2 py-0.5 rounded bg-black/70 backdrop-blur-sm text-slate-200">哈利利市集</span>
+              </div>
+            </div>
+
             <div class="bg-sand-900/70 p-3 rounded-xl border border-sand-700/60 text-xs text-slate-400">
               <strong class="text-slate-200">餐食安排：</strong>早：旅館內自助 ｜ 午：埃及風味料理 ｜ 晚：機場面膜/餐食自理（因應辦理報到時間）。
             </div>
@@ -414,6 +618,160 @@
         </div>
 
       </div>
+
+      <!-- Daily Outfit Planning & Photo Upload Gallery -->
+      <div class="bg-sand-800 border border-sand-700 rounded-2xl p-5 space-y-4 shadow-lg">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-sand-700 pb-3">
+          <div>
+            <h3 class="text-sm font-bold text-white flex items-center gap-2">
+              <i data-lucide="camera" class="w-4 h-4 text-pyramid-400"></i>
+              每日穿搭記錄與照片上傳 (Daily Outfit Memo)
+            </h3>
+            <p class="text-xs text-slate-400 mt-0.5">出發前可先拍照或記下每天的衣服搭配，隨時查看不煩惱</p>
+          </div>
+          <span class="text-[11px] px-2.5 py-1 rounded bg-sand-900 text-pyramid-400 border border-pyramid-500/30 self-start sm:self-auto">
+            相片即時儲存於手機/電腦瀏覽器
+          </span>
+        </div>
+
+        <!-- Add Outfit Controls -->
+        <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 bg-sand-900/80 p-3.5 rounded-xl border border-sand-700/60 text-xs">
+          <div class="sm:col-span-3">
+            <label class="block text-slate-400 mb-1">選擇天數 / 行程</label>
+            <select id="outfit-day-select" class="w-full bg-sand-950 border border-sand-700 rounded-lg p-2 text-white focus:outline-none focus:border-pyramid-500">
+              <option value="D1">D1 (9/21) 飛機航行夜</option>
+              <option value="D2">D2 (9/22) 開羅清真寺＋火車</option>
+              <option value="D3">D3 (9/23) 亞斯文＋風帆船</option>
+              <option value="D4">D4 (9/24) 阿布辛貝＋康孟波</option>
+              <option value="D5">D5 (9/25) 水閘門＋路克索神殿</option>
+              <option value="D6">D6 (9/26) 帝王谷＋前往虎加達</option>
+              <option value="D7">D7 (9/27) 紅海渡假/衝沙/浮潛</option>
+              <option value="D8">D8 (9/28) 大埃及博物館</option>
+              <option value="D9">D9 (9/29) 吉薩金字塔＋市集</option>
+              <option value="D10">D10 (9/30) 返抵國門</option>
+            </select>
+          </div>
+          <div class="sm:col-span-5">
+            <label class="block text-slate-400 mb-1">穿搭備註 / 搭配想法</label>
+            <input type="text" id="outfit-note" placeholder="例如：透氣白色亞麻洋裝＋防曬披肩＋涼鞋" class="w-full bg-sand-950 border border-sand-700 rounded-lg p-2 text-white focus:outline-none focus:border-pyramid-500">
+          </div>
+          <div class="sm:col-span-4 flex items-end gap-2">
+            <label class="flex-1 cursor-pointer px-3 py-2 rounded-lg bg-sand-800 hover:bg-sand-700 text-slate-200 border border-sand-700 text-center transition flex items-center justify-center gap-1.5 truncate">
+              <i data-lucide="upload" class="w-3.5 h-3.5 text-pyramid-400"></i>
+              <span id="outfit-upload-btn-text">選擇穿搭照片</span>
+              <input type="file" id="outfit-file-input" accept="image/*" class="hidden" onchange="handleOutfitFile(event)">
+            </label>
+            <button onclick="saveOutfitEntry()" class="px-3.5 py-2 rounded-lg bg-pyramid-500 hover:bg-pyramid-400 text-black font-bold transition shrink-0">
+              儲存
+            </button>
+          </div>
+        </div>
+
+        <!-- Outfit Preview Cards Grid -->
+        <div id="outfit-gallery" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 pt-2">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Tab 2: 簡單記帳 (Expense Tracker) -->
+    <section id="tab-expense" class="tab-content hidden space-y-5">
+      
+      <!-- Expense Header & Summary -->
+      <div class="bg-sand-800 border border-sand-700 rounded-2xl p-5">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+          <div>
+            <h2 class="text-base font-bold text-white flex items-center gap-2">
+              <i data-lucide="wallet" class="w-5 h-5 text-emerald-400"></i>
+              旅費簡單記帳 (美金 USD ＆ 埃及鎊 EGP)
+            </h2>
+            <p class="text-xs text-slate-400 mt-1">輸入消費項目與幣別，依日期快速查詢每日累積花費</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-xs text-slate-400">快速篩選日期：</span>
+            <select id="expense-filter-date" onchange="renderExpenses()" class="bg-sand-900 border border-sand-700 text-xs text-pyramid-400 rounded-lg px-2.5 py-1.5 focus:outline-none focus:border-pyramid-500">
+              <option value="ALL">全部日期 (總計)</option>
+              <option value="2026-09-21">9/21 (D1)</option>
+              <option value="2026-09-22">9/22 (D2)</option>
+              <option value="2026-09-23">9/23 (D3)</option>
+              <option value="2026-09-24">9/24 (D4)</option>
+              <option value="2026-09-25">9/25 (D5)</option>
+              <option value="2026-09-26">9/26 (D6)</option>
+              <option value="2026-09-27">9/27 (D7)</option>
+              <option value="2026-09-28">9/28 (D8)</option>
+              <option value="2026-09-29">9/29 (D9)</option>
+              <option value="2026-09-30">9/30 (D10)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Totals Dashboard Cards -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div class="bg-sand-900/90 border border-emerald-500/30 rounded-xl p-3.5">
+            <span class="text-[11px] text-slate-400 block">美金花費 (USD)</span>
+            <span class="text-xl font-mono font-black text-emerald-400" id="total-usd-display">$0</span>
+            <span class="text-[10px] text-slate-500 block mt-0.5" id="usd-scope-label">目前篩選總計</span>
+          </div>
+          <div class="bg-sand-900/90 border border-amber-500/30 rounded-xl p-3.5">
+            <span class="text-[11px] text-slate-400 block">埃鎊花費 (EGP)</span>
+            <span class="text-xl font-mono font-black text-amber-400" id="total-egp-display">0 <span class="text-xs">LE</span></span>
+            <span class="text-[10px] text-slate-500 block mt-0.5" id="egp-scope-label">目前篩選總計</span>
+          </div>
+          <div class="bg-sand-900/90 border border-sand-700 rounded-xl p-3.5">
+            <span class="text-[11px] text-slate-400 block">折合台幣約 (TWD)</span>
+            <span class="text-xl font-mono font-black text-slate-200" id="total-twd-display">NT$ 0</span>
+            <span class="text-[10px] text-slate-500 block mt-0.5">USD≈32 / EGP≈0.65</span>
+          </div>
+          <div class="bg-sand-900/90 border border-sand-700 rounded-xl p-3.5">
+            <span class="text-[11px] text-slate-400 block">已記錄筆數</span>
+            <span class="text-xl font-mono font-black text-sky-400" id="total-records-display">0 筆</span>
+            <span class="text-[10px] text-slate-500 block mt-0.5">隨時點擊刪除維護</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add Expense Form -->
+      <div class="bg-sand-800/90 border border-sand-700 rounded-2xl p-4 sm:p-5 space-y-3">
+        <h3 class="text-xs font-bold text-pyramid-400 uppercase tracking-wider flex items-center gap-1.5">
+          <i data-lucide="plus-circle" class="w-4 h-4"></i>
+          新增一筆開銷支出
+        </h3>
+        <div class="grid grid-cols-1 sm:grid-cols-12 gap-2.5 text-xs">
+          <div class="sm:col-span-3">
+            <input type="date" id="exp-date" value="2026-09-22" class="w-full bg-sand-900 border border-sand-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-pyramid-500">
+          </div>
+          <div class="sm:col-span-4">
+            <input type="text" id="exp-item" placeholder="消費項目 (例: 買水 / 洗手間 / 駱駝小費 / 圍巾)" class="w-full bg-sand-900 border border-sand-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-pyramid-500">
+          </div>
+          <div class="sm:col-span-2">
+            <select id="exp-currency" class="w-full bg-sand-900 border border-sand-700 rounded-xl px-2 py-2 text-white focus:outline-none focus:border-pyramid-500">
+              <option value="USD">美金 ($)</option>
+              <option value="EGP">埃鎊 (LE)</option>
+            </select>
+          </div>
+          <div class="sm:col-span-2">
+            <input type="number" id="exp-amount" min="0" step="0.5" placeholder="金額" class="w-full bg-sand-900 border border-sand-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-pyramid-500">
+          </div>
+          <div class="sm:col-span-1">
+            <button onclick="addExpense()" class="w-full h-full min-h-[36px] rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition flex items-center justify-center">
+              <i data-lucide="plus" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Expense Records List -->
+      <div class="bg-sand-800/60 border border-sand-700 rounded-2xl p-4 sm:p-5 space-y-3">
+        <div class="flex items-center justify-between text-xs text-slate-400 border-b border-sand-700/80 pb-2.5">
+          <span>消費明細列表</span>
+          <span id="expense-count-text">共 0 筆</span>
+        </div>
+        <div id="expense-list-container" class="space-y-2">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+
     </section>
 
     <section id="tab-packing" class="tab-content hidden space-y-5">
@@ -473,7 +831,7 @@
           </div>
 
           <p class="text-[11px] text-slate-400 leading-relaxed">
-            ★ <strong>注意：</strong>指甲刀、剪刀、自拍棒、腳架、液體/乳液&gt;100ml均需放置託運行李。
+            ★ <strong>注意：</strong>指甲刀、剪刀、自拍棒、腳架、液體/乳液&gt;100ml均需放置託運行李。食品<strong>絕不可有任何「豬」圖案</strong>。
           </p>
 
           <div class="space-y-2.5 text-xs" id="pack-checked-list">
@@ -556,9 +914,6 @@
             <span>美金與換匯指引（說明會重點）</span>
           </div>
           <ul class="text-xs text-slate-300 space-y-2 leading-relaxed">
-            <li><strong class="text-white">攜帶金額：</strong>建議每人準備約 <strong>$800 美金</strong>。</li>
-            <li><strong class="text-white">小額散鈔配置：</strong>準備 <strong>$100 ~ $200 小額美金</strong>（建議面額：$10x15張, $5x10張, $1x30張），以便隨時支付每日行李、騎駱駝或私人小費。</li>
-            <li><strong class="text-amber-300">新版美金防偽：</strong>請換新版美金！除 1 美元外，新版美金人像後方「<strong>沒有圈圈</strong>」，舊版當地容易遭拒收。</li>
             <li><strong class="text-white">換埃及鎊：</strong>上車後會有人協助換埃鎊，<strong>換約 30 美金即可</strong>（主要用於景點洗手間每次約5-10埃鎊與買水）。出境機場無法將埃鎊換回美金，勿換過多。</li>
             <li><strong class="text-white">刷卡與小費墊付：</strong>有店面與咖啡廳多可刷卡；導遊領隊會先協助大家代墊零星小費（約 30-35 美金）。</li>
           </ul>
@@ -631,7 +986,7 @@
 
   <footer class="mt-auto py-6 bg-sand-950 border-t border-sand-800 text-center text-xs text-slate-500">
     <div class="max-w-5xl mx-auto px-4 space-y-1">
-      <p class="text-slate-400 font-medium">特選埃及 10 日遊隨身手冊 ｜ 26XM921TK 埃及古文明巡禮</p>
+      <p class="text-slate-400 font-medium">特選埃及 10 日遊隨身手冊 ｜ 埃及古文明巡禮</p>
       <p class="text-[11px] font-mono text-slate-600">All data saved locally on your device. Have an unforgettable Nile journey!</p>
     </div>
   </footer>
@@ -642,13 +997,13 @@
       document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
       document.getElementById(tabId).classList.remove('hidden');
 
-      const tabs = ['itinerary', 'packing', 'souvenir', 'briefing'];
+      const tabs = ['itinerary', 'expense', 'packing', 'souvenir', 'briefing'];
       tabs.forEach(t => {
         const btn = document.getElementById(`nav-${t}`);
         if (`tab-${t}` === tabId) {
-          btn.className = 'tab-btn flex-1 min-w-[90px] py-3 text-xs sm:text-sm font-medium border-b-2 border-pyramid-500 text-pyramid-400 flex items-center justify-center gap-1.5 transition';
+          btn.className = 'tab-btn flex-1 min-w-[85px] py-3 text-xs sm:text-sm font-medium border-b-2 border-pyramid-500 text-pyramid-400 flex items-center justify-center gap-1.5 transition';
         } else {
-          btn.className = 'tab-btn flex-1 min-w-[90px] py-3 text-xs sm:text-sm font-medium border-b-2 border-transparent text-slate-400 hover:text-slate-200 flex items-center justify-center gap-1.5 transition';
+          btn.className = 'tab-btn flex-1 min-w-[85px] py-3 text-xs sm:text-sm font-medium border-b-2 border-transparent text-slate-400 hover:text-slate-200 flex items-center justify-center gap-1.5 transition';
         }
       });
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -656,9 +1011,7 @@
 
     // Default Packing Items Data
     const defaultPackingList = [
-      // Carry-on / Overnight Bag
       { id: 'c1', name: '護照正本（效期6個月以上，集合提早交領隊）', category: 'carryon', checked: false },
-      { id: 'c2', name: '美金現鈔（800美，含100-200新版小額無圈圈）', category: 'carryon', checked: false },
       { id: 'c3', name: '海外高回饋信用卡 / 提款卡', category: 'carryon', checked: false },
       { id: 'c4', name: '手機＋充電線＋備用行動電源（限2顆，隨身嚴禁託運）', category: 'carryon', checked: false },
       { id: 'c5', name: '防風保暖薄外套（機上、夜臥火車、阿布辛貝清晨防冷）', category: 'carryon', checked: false },
@@ -667,15 +1020,14 @@
       { id: 'c8', name: '隨身濕紙巾、乾洗手、防風沙口罩', category: 'carryon', checked: false },
       { id: 'c9', name: '個人隨身急用藥（暈車暈船藥、感冒藥、止痛藥）', category: 'carryon', checked: false },
       { id: 'c10', name: '太陽眼鏡、遮陽帽、清真寺防曬薄頭巾/圍巾', category: 'carryon', checked: false },
-      { id: 'c11', name: '小糖果/小零食/原子筆（贈送當地部落孩童用）', category: 'carryon', checked: false },
+      { id: 'c11', name: '小糖果/小零食/原子筆（贈送當地貝都因/努比亞孩童用）', category: 'carryon', checked: false },
       
-      // Checked Baggage
       { id: 'k1', name: '個人牙刷、牙膏、刮鬍刀（埃及飯店皆不提供）', category: 'checked', checked: false },
       { id: 'k2', name: '個人生理用品（女性備用衛生棉條/棉片）', category: 'checked', checked: false },
       { id: 'k3', name: '室內輕便拖鞋 / 涼鞋（飯店及遊輪無一次性拖鞋）', category: 'checked', checked: false },
       { id: 'k4', name: '常備腸胃藥（水土不服、止瀉藥、胃乳等）', category: 'checked', checked: false },
       { id: 'k5', name: '透氣棉質短袖、薄長褲（女性騎駱駝與寺廟穿著）', category: 'checked', checked: false },
-      { id: 'k6', name: '泳裝/泳帽（遊輪及紅海渡假村泳池使用）', category: 'checked', checked: false },
+      { id: 'k6', name: '泳裝/泳帽（遊輪及紅海渡假村泳池/浮潛使用）', category: 'checked', checked: false },
       { id: 'k7', name: '指甲剪、修眉剪刀、自拍棒、相機腳架（必須託運）', category: 'checked', checked: false },
       { id: 'k8', name: '大瓶防曬乳、曬後蘆薈膠、保濕面膜', category: 'checked', checked: false },
       { id: 'k9', name: '耐走好穿休閒鞋/健走鞋（沙地古蹟行走）', category: 'checked', checked: false },
@@ -684,7 +1036,7 @@
       { id: 'k12', name: '折疊式備用環保大購物袋（裝哈利利市集伴手禮）', category: 'checked', checked: false }
     ];
 
-    // Default Souvenir List Data
+    // Default Souvenirs
     const defaultSouvenirList = [
       { id: 's1', name: '埃及香精 (Essence Oil)', target: '自己/好姊妹', notes: '蓮花香(Lotus)、生命之鑰；香精店或市集購買', checked: false },
       { id: 's2', name: '紙莎草畫 (Papyrus Art)', target: '家人/家中擺設', notes: '確認是否真品紙莎草（柔軟不易裂），可寫象形文字名字', checked: false },
@@ -694,22 +1046,211 @@
       { id: 's6', name: '金字塔 / 聖甲蟲小擺飾石雕', target: '朋友/小孩', notes: '雪花石或金屬製品，整組購買較划算', checked: false }
     ];
 
-    // LocalStorage State Handlers
+    // Initial Default Expenses Demo
+    const defaultExpenses = [
+      { id: 'exp_1', date: '2026-09-22', item: '景點付費洗手間', currency: 'EGP', amount: 10 },
+      { id: 'exp_2', date: '2026-09-22', item: '礦泉水 2 瓶', currency: 'EGP', amount: 30 },
+      { id: 'exp_3', date: '2026-09-23', item: '三角風帆船船伕小費', currency: 'USD', amount: 2 }
+    ];
+
+    // Initial Outfits Demo
+    const defaultOutfits = [
+      { id: 'out_1', day: 'D2', note: '薄長袖襯衫＋棉麻長褲（清真寺與搭火車穿著）', img: '' },
+      { id: 'out_2', day: 'D7', note: '泳衣＋防曬罩衫＋太陽眼鏡（紅海渡假）', img: '' }
+    ];
+
+    // Storage
     let packingItems = JSON.parse(localStorage.getItem('egypt_packing_items')) || defaultPackingList;
     let souvenirItems = JSON.parse(localStorage.getItem('egypt_souvenir_items')) || defaultSouvenirList;
+    let expenseItems = JSON.parse(localStorage.getItem('egypt_expense_items')) || defaultExpenses;
+    let outfitItems = JSON.parse(localStorage.getItem('egypt_outfit_items')) || defaultOutfits;
     let currentSouvenirFilter = 'all';
+    let tempOutfitBase64 = '';
 
+    // ==================== EXPENSE TRACKER FUNCTIONS ====================
+    function saveExpenses() {
+      localStorage.setItem('egypt_expense_items', JSON.stringify(expenseItems));
+      renderExpenses();
+    }
+
+    function addExpense() {
+      const date = document.getElementById('exp-date').value;
+      const item = document.getElementById('exp-item').value.trim();
+      const currency = document.getElementById('exp-currency').value;
+      const amount = parseFloat(document.getElementById('exp-amount').value);
+
+      if (!item || isNaN(amount) || amount <= 0) {
+        return;
+      }
+
+      expenseItems.unshift({
+        id: 'exp_' + Date.now(),
+        date: date,
+        item: item,
+        currency: currency,
+        amount: amount
+      });
+
+      document.getElementById('exp-item').value = '';
+      document.getElementById('exp-amount').value = '';
+      saveExpenses();
+    }
+
+    function deleteExpense(id) {
+      expenseItems = expenseItems.filter(e => e.id !== id);
+      saveExpenses();
+    }
+
+    function renderExpenses() {
+      const filterDate = document.getElementById('expense-filter-date').value;
+      const container = document.getElementById('expense-list-container');
+      container.innerHTML = '';
+
+      let filtered = expenseItems;
+      if (filterDate !== 'ALL') {
+        filtered = expenseItems.filter(e => e.date === filterDate);
+      }
+
+      let totalUSD = 0;
+      let totalEGP = 0;
+
+      filtered.forEach(e => {
+        if (e.currency === 'USD') totalUSD += e.amount;
+        if (e.currency === 'EGP') totalEGP += e.amount;
+      });
+
+      // Rough TWD estimate: USD*32 + EGP*0.65
+      const totalTWD = Math.round(totalUSD * 32 + totalEGP * 0.65);
+
+      document.getElementById('total-usd-display').textContent = `$${totalUSD.toFixed(1)}`;
+      document.getElementById('total-egp-display').innerHTML = `${totalEGP.toFixed(1)} <span class="text-xs">LE</span>`;
+      document.getElementById('total-twd-display').textContent = `NT$ ${totalTWD.toLocaleString()}`;
+      document.getElementById('total-records-display').textContent = `${filtered.length} 筆`;
+      document.getElementById('expense-count-text').textContent = `共 ${filtered.length} 筆明細`;
+
+      const scopeText = filterDate === 'ALL' ? '目前篩選：全部日期' : `目前篩選：${filterDate}`;
+      document.getElementById('usd-scope-label').textContent = scopeText;
+      document.getElementById('egp-scope-label').textContent = scopeText;
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="text-center py-8 text-slate-500 text-xs bg-sand-900/40 rounded-xl border border-sand-700/40">
+            該日期尚無記帳紀錄，請由上方新增！
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(exp => {
+        const div = document.createElement('div');
+        div.className = 'flex items-center justify-between p-3 rounded-xl bg-sand-900/80 border border-sand-700/60 text-xs hover:border-sand-600 transition';
+        const isUSD = exp.currency === 'USD';
+        div.innerHTML = `
+          <div class="flex items-center space-x-3 flex-1 pr-2">
+            <span class="px-2 py-0.5 rounded text-[10px] font-mono ${isUSD ? 'bg-emerald-950 text-emerald-400 border border-emerald-800' : 'bg-amber-950 text-amber-400 border border-amber-800'}">
+              ${exp.currency}
+            </span>
+            <div>
+              <div class="font-bold text-white">${exp.item}</div>
+              <div class="text-[10px] text-slate-400 font-mono">${exp.date}</div>
+            </div>
+          </div>
+          <div class="flex items-center space-x-3 shrink-0">
+            <span class="font-mono font-bold text-sm ${isUSD ? 'text-emerald-400' : 'text-amber-400'}">
+              ${isUSD ? '$' : ''}${exp.amount} ${!isUSD ? 'LE' : ''}
+            </span>
+            <button onclick="deleteExpense('${exp.id}')" class="text-slate-500 hover:text-rose-400 p-1 transition" title="刪除">
+              <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+
+      lucide.createIcons();
+    }
+
+    // ==================== OUTFIT PLANNING FUNCTIONS ====================
+    function handleOutfitFile(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        tempOutfitBase64 = e.target.result;
+        document.getElementById('outfit-upload-btn-text').textContent = '已選取相片 ✓';
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function saveOutfitEntry() {
+      const day = document.getElementById('outfit-day-select').value;
+      const note = document.getElementById('outfit-note').value.trim() || '未填寫穿搭備註';
+
+      outfitItems.unshift({
+        id: 'out_' + Date.now(),
+        day: day,
+        note: note,
+        img: tempOutfitBase64
+      });
+
+      tempOutfitBase64 = '';
+      document.getElementById('outfit-note').value = '';
+      document.getElementById('outfit-upload-btn-text').textContent = '選擇穿搭照片';
+      document.getElementById('outfit-file-input').value = '';
+
+      localStorage.setItem('egypt_outfit_items', JSON.stringify(outfitItems));
+      renderOutfits();
+    }
+
+    function deleteOutfit(id) {
+      outfitItems = outfitItems.filter(o => o.id !== id);
+      localStorage.setItem('egypt_outfit_items', JSON.stringify(outfitItems));
+      renderOutfits();
+    }
+
+    function renderOutfits() {
+      const container = document.getElementById('outfit-gallery');
+      container.innerHTML = '';
+
+      if (outfitItems.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full text-center py-6 text-slate-500 text-xs bg-sand-900/40 rounded-xl border border-sand-700/40">
+            尚未新增穿搭，可拍下衣服上傳記錄！
+          </div>
+        `;
+        return;
+      }
+
+      outfitItems.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'bg-sand-900 rounded-xl border border-sand-700 overflow-hidden flex flex-col justify-between group';
+        div.innerHTML = `
+          <div class="relative w-full h-28 bg-sand-950 flex items-center justify-center overflow-hidden">
+            ${item.img ? `<img src="${item.img}" class="w-full h-full object-cover">` : `<div class="text-slate-600 flex flex-col items-center"><i data-lucide="shirt" class="w-6 h-6 mb-1"></i><span class="text-[10px]">無相片</span></div>`}
+            <span class="absolute top-1.5 left-1.5 px-2 py-0.5 rounded bg-sand-900/90 text-pyramid-400 font-bold font-mono text-[10px] border border-pyramid-500/30">
+              ${item.day}
+            </span>
+            <button onclick="deleteOutfit('${item.id}')" class="absolute top-1.5 right-1.5 p-1 rounded bg-sand-900/80 hover:bg-rose-900 text-slate-400 hover:text-rose-200 transition opacity-80 group-hover:opacity-100">
+              <i data-lucide="trash-2" class="w-3 h-3"></i>
+            </button>
+          </div>
+          <div class="p-2.5 text-[11px] text-slate-300">
+            <p class="line-clamp-2 leading-tight">${item.note}</p>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+
+      lucide.createIcons();
+    }
+
+    // ==================== PACKING FUNCTIONS ====================
     function savePacking() {
       localStorage.setItem('egypt_packing_items', JSON.stringify(packingItems));
       renderPacking();
     }
 
-    function saveSouvenirs() {
-      localStorage.setItem('egypt_souvenir_items', JSON.stringify(souvenirItems));
-      renderSouvenirs();
-    }
-
-    // Render Packing List
     function renderPacking() {
       const carryonBox = document.getElementById('pack-carryon-list');
       const checkedBox = document.getElementById('pack-checked-list');
@@ -740,7 +1281,6 @@
         }
       });
 
-      // Update progress
       const percent = total === 0 ? 0 : Math.round((completed / total) * 100);
       document.getElementById('pack-progress-bar').style.width = `${percent}%`;
       document.getElementById('pack-progress-text').textContent = `${percent}%`;
@@ -779,7 +1319,12 @@
       savePacking();
     }
 
-    // Render Souvenirs
+    // ==================== SOUVENIR FUNCTIONS ====================
+    function saveSouvenirs() {
+      localStorage.setItem('egypt_souvenir_items', JSON.stringify(souvenirItems));
+      renderSouvenirs();
+    }
+
     function renderSouvenirs() {
       const container = document.getElementById('souvenir-container');
       container.innerHTML = '';
@@ -887,8 +1432,9 @@
       lucide.createIcons();
       renderPacking();
       renderSouvenirs();
+      renderExpenses();
+      renderOutfits();
     });
   </script>
 </body>
 </html>
-```
